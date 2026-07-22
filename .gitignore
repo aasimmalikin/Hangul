@@ -1,0 +1,82 @@
+# ---- Python -------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.eggs/
+.venv/
+venv/
+env/
+
+# ---- Tooling caches -----------------------------------------
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.ipynb_checkpoints/
+
+# ---- Secrets and env ----------------------------------------
+# .env.example IS committed. Everything else is not.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials
+.aws/
+secrets/
+
+# ---- Terraform ----------------------------------------------
+# NOTE: .terraform.lock.hcl is intentionally NOT ignored — commit it.
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+
+# ---- Models and weights -------------------------------------
+*.pth
+*.pt
+*.safetensors
+*.gguf
+models/
+checkpoints/
+
+# ---- Data and indexes ---------------------------------------
+data/raw/
+data/interim/
+*.faiss
+*.duckdb
+*.sqlite
+*.sqlite3
+
+# ---- Eval + run artifacts -----------------------------------
+# cassettes/ is intentionally NOT ignored — they are test fixtures
+# and your evals are not reproducible without them.
+evals/reports/
+evals/runs/
+traces/
+logs/
+*.log
+
+# ---- Local infra volumes ------------------------------------
+.docker/
+pgdata/
+redisdata/
+langfuse-data/
+
+# ---- Editors and OS -----------------------------------------
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json

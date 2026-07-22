@@ -1,0 +1,17 @@
+# Local development and CI lint/test. Never installed in the runtime image.
+-r requirements.txt
+
+pytest>=8.3
+pytest-asyncio>=0.24
+pytest-cov>=5.0
+respx>=0.21                  # httpx mocking for provider tests
+freezegun>=1.5
+testcontainers[postgres,redis]>=4.8   # integration tests against real services
+
+ruff>=0.6
+mypy>=1.11
+types-PyYAML
+types-jsonschema
+
+pre-commit>=3.8
+ipython>=8.26

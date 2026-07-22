@@ -1,0 +1,29 @@
+* text=auto
+
+*.sh            text eol=lf
+*.bash          text eol=lf
+Dockerfile      text eol=lf
+*.dockerfile    text eol=lf
+Makefile        text eol=lf
+*.tf            text eol=lf
+*.tfvars        text eol=lf
+*.yaml          text eol=lf
+*.yml           text eol=lf
+*.j2            text eol=lf
+.env.example    text eol=lf
+
+*.ps1           text eol=crlf
+*.bat           text eol=crlf
+*.cmd           text eol=crlf
+
+*.pth           binary
+*.pt            binary
+*.safetensors   binary
+*.gguf          binary
+*.png           binary
+*.jpg           binary
+*.pdf           binary
+*.faiss         binary
+
+requirements.lock   linguist-generated=true
+cassettes/**        linguist-generated=true

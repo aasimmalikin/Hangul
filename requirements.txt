@@ -1,0 +1,57 @@
+# =============================================================
+# Runtime dependencies only. This is what goes in the Docker image.
+# Dev tooling  -> requirements-dev.txt
+# Eval tooling -> requirements-eval.txt (heavy, CI + laptop only)
+#
+# Floors not pins: compile a real lock before you build.
+#   uv pip compile requirements.txt -o requirements.lock
+# =============================================================
+
+# ---- L0  contracts, config, logging -------------------------
+pydantic>=2.9
+pydantic-settings>=2.4
+structlog>=24.1
+python-dotenv>=1.0
+typer>=0.12
+rich>=13.7
+PyYAML>=6.0
+
+# ---- L1  model providers, prompts, cache --------------------
+anthropic>=0.40
+boto3>=1.35                  # bedrock-runtime
+jinja2>=3.1
+tenacity>=8.5                # or hand-roll the backoff
+redis[hiredis]>=5.0
+tiktoken>=0.7                # token accounting + chunk sizing
+
+# ---- L2  tool registry and dispatch -------------------------
+jsonschema>=4.23
+
+# ---- L3  MCP ------------------------------------------------
+mcp>=1.2
+httpx>=0.27                  # remote MCP transport
+
+# ---- L4  retrieval ------------------------------------------
+pgvector>=0.3
+asyncpg>=0.29
+SQLAlchemy[asyncio]>=2.0
+alembic>=1.13
+openai>=1.50                 # embeddings only; drop if using Bedrock Titan
+
+# ---- L5  agent orchestration --------------------------------
+langgraph
+langgraph-checkpoint-postgres
+langchain-core
+psycopg[binary,pool]>=3.2    # required by the postgres checkpointer
+
+# ---- L7  API surface ----------------------------------------
+fastapi>=0.115
+uvicorn[standard]>=0.30
+sse-starlette>=2.1
+slowapi>=0.1.9               # redis-backed rate limiting
+
+# ---- observability ------------------------------------------
+opentelemetry-api>=1.27
+opentelemetry-sdk>=1.27
+opentelemetry-exporter-otlp>=1.27
+langfuse>=2.50

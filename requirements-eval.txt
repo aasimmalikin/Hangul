@@ -1,0 +1,11 @@
+# Evaluation stack. Deliberately NOT in requirements.txt — ragas and
+# inspect-ai together pull several hundred MB of transitive deps that
+# have no business in a Fargate task.
+-r requirements.txt
+
+ragas>=0.2                   # retrieval + faithfulness metrics
+inspect-ai>=0.3              # agentic trajectory tasks, sandboxed scoring
+datasets>=3.0                # ragas dependency, pinned explicitly
+duckdb>=1.1                  # scorecard queries over results JSONL
+pandas>=2.2
+matplotlib>=3.9              # scorecard plots for the README

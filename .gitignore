@@ -28,6 +28,7 @@ htmlcov/
 *.key
 credentials
 .aws/
+aws/
 secrets/
 
 # ---- Terraform ----------------------------------------------
@@ -36,6 +37,9 @@ secrets/
 *.tfstate
 *.tfstate.*
 *.tfvars
+*.hcl
+*.tf
+
 !*.tfvars.example
 crash.log
 crash.*.log
@@ -80,3 +84,6 @@ Thumbs.db
 .vscode/*
 !.vscode/settings.json
 !.vscode/extensions.json
+
+# ---- Misc ---------------------------------------------------
+*.zip

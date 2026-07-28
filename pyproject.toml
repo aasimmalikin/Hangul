@@ -1,0 +1,31 @@
+[project]
+name = "harness"
+version = "0.1.0"
+description = "Agentic QA harness"
+requires-python = ">=3.12"
+
+# Step 1 declares ONLY what the skeleton needs to walk. Dependencies grow as you
+# thicken: anthropic at step 4, langgraph at step 7, pgvector at step 9, and so on.
+# Keeping this minimal keeps the step-1 image small and the build fast.
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "pydantic>=2.9",
+    "pydantic-settings>=2.4",
+    "structlog>=24.1",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+# src layout: the importable package is src/harness, imported as `harness`.
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+src = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]

@@ -8,7 +8,8 @@ class Settings(BaseSettings):
     app_name: str = "agentic-qa"
     environment: str = Literal["dev", "prod"] 
     log_level: str = "INFO"
-    anthropic_api_key: str | None = None
+    openai_api_key: str | None = None
+    model: str = "gpt-4o-mini"
 
 @lru_cache()
 def get_settings() -> Settings:

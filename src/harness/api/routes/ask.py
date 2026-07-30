@@ -1,13 +1,17 @@
 from fastapi import APIRouter
 from pydantic import BaseModel, Field
 import structlog
+from harness.agent.loop import run_agent
 from harness.logging import log
 from harness.schemas.run import RunRecord
 from harness.providers import get_provider
 from harness.prompts.registry import get_prompt
+from harness.tools.registry import ToolRegistry
+from harness.tools.builtin.calculator import CALCULATOR_TOOL
 
 router = APIRouter()
-
+_registry = ToolRegistry()
+_registry.registry(CALCULATOR_TOOL)
 
 
 
@@ -18,7 +22,9 @@ class AskRequest(BaseModel):
 class AskResponse(BaseModel):
     answer: str
     run_id: str 
-    prompt: str
+    prompt_version: str
+    steps: int
+    stopped_reason: str
 
 @router.post("/ask", response_model = AskResponse)
 async def ask(req: AskRequest)-> AskResponse:
@@ -29,15 +35,18 @@ async def ask(req: AskRequest)-> AskResponse:
     structlog.contextvars.bind_contextvars(run_id = run.run_id, prompt = prompt_version.version)
 
     log.info("Received question", question = req.question)
-    provider = get_provider()
-    completion = await provider.complete(system = prompt_version.text, question = req.question )
-    log.info("Returning Answer",
-    model = completion.model,
-    token_in = completion.token_in,
-    token_out = completion.token_out,
+    result = await run_agent(
+        question = req.question,
+        prompt_text = prompt_version.text,
+        registry = _registry,
+        provider = get_provider()
     )
+    log.info("returning answer", steps = result.steps, stopped_reason = result.stopped_reason,
+            input_tokens = result.input_tokens, output_tokens = result.output_tokens)
 
     return AskResponse(
-        answer=completion.text,
+        answer=result.answer,
         run_id=run.run_id,
-        prompt = prompt_version.version)
+        prompt_version = prompt_version.version,
+        steps = result.steps,
+        stopped_reason = result.stopped_reason)

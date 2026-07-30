@@ -14,6 +14,7 @@ dependencies = [
     "pydantic-settings>=2.4",
     "structlog>=24.1",
     "openai>=1.50",
+    "jsonschema>=4.23"
 ]
 
 [build-system]

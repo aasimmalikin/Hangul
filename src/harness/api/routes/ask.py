@@ -4,10 +4,11 @@ import structlog
 from harness.logging import log
 from harness.schemas.run import RunRecord
 from harness.providers import get_provider
+from harness.prompts.registry import get_prompt
 
 router = APIRouter()
 
-SYSTEM_PROMPT = "You are a concise, accurate assistant. Answer the user's question directly "
+
 
 
 class AskRequest(BaseModel):
@@ -17,15 +18,19 @@ class AskRequest(BaseModel):
 class AskResponse(BaseModel):
     answer: str
     run_id: str 
+    prompt: str
 
 @router.post("/ask", response_model = AskResponse)
 async def ask(req: AskRequest)-> AskResponse:
-    run = RunRecord()
+    prompt_version = get_prompt("system_agent")
+    run = RunRecord(model = get_provider().model, prompt_version = prompt_version.version)
+
     structlog.contextvars.clear_contextvars()
-    structlog.contextvars.bind_contextvars(run_id = run.run_id)
+    structlog.contextvars.bind_contextvars(run_id = run.run_id, prompt = prompt_version.version)
+
     log.info("Received question", question = req.question)
     provider = get_provider()
-    completion = await provider.complete(system = SYSTEM_PROMPT, question = req.question )
+    completion = await provider.complete(system = prompt_version.text, question = req.question )
     log.info("Returning Answer",
     model = completion.model,
     token_in = completion.token_in,
@@ -34,4 +39,5 @@ async def ask(req: AskRequest)-> AskResponse:
 
     return AskResponse(
         answer=completion.text,
-        run_id=run.run_id)
+        run_id=run.run_id,
+        prompt = prompt_version.version)

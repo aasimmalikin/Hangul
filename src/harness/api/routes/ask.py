@@ -9,6 +9,7 @@ from harness.prompts.registry import get_prompt
 from harness.tools.registry import ToolRegistry
 from harness.tools.builtin.calculator import CALCULATOR_TOOL
 from harness.tools.builtin.search_docs import SEARCH_DOCS_TOOL
+from harness.tools.builtin.web_search import WEB_SEARCH_TOOL
 from harness.cache.keys import answer_key
 from harness.cache.memory_cache import MemoryCache
 import json
@@ -17,6 +18,8 @@ router = APIRouter()
 _registry = ToolRegistry()
 _registry.registry(CALCULATOR_TOOL)
 _registry.registry(SEARCH_DOCS_TOOL)
+_registry.registry(WEB_SEARCH_TOOL)
+
 _cache = MemoryCache()
 
 

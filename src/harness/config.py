@@ -10,6 +10,7 @@ class Settings(BaseSettings):
     log_level: str = "INFO"
     openai_api_key: str | None = None
     model: str = "gpt-4o-mini"
+    tavily_api_key: str | None = None
 
 @lru_cache()
 def get_settings() -> Settings:

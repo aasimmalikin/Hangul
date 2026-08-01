@@ -1,0 +1,9 @@
+Meridian Logistics Warehouse Reference
+
+The Riverside warehouse has 12 storage aisles. Each aisle holds 45 pallet racks, and each pallet rack can store 8 pallets.
+
+A standard shipping pallet at Meridian weighs 27 kilograms when empty. When fully loaded, a pallet carries 340 kilograms of goods.
+
+The warehouse operates 3 shifts per day. Each shift has 14 workers, and each worker processes an average of 62 packages per shift.
+
+Delivery trucks at the Riverside facility have a maximum cargo capacity of 9500 kilograms per trip.

@@ -1,0 +1,10 @@
+Meridian Logistics — Inventory Audit (Riverside)
+
+Current stock on hand:
+- Standard pallets in inventory: 1850 units, valued at 34 dollars each.
+- Forklift battery packs: 12 units, valued at 2200 dollars each.
+- Shrink-wrap rolls: 340 units, valued at 18 dollars each.
+
+Audit note: cross-check the pallet storage capacity in the warehouse reference
+document, and confirm the audit against the latest committed change in the
+project repository.

@@ -4,6 +4,7 @@ from harness.providers.base import Provider
 from harness.tools.dispatch import dispatch
 from harness.tools.openai_spec import to_openai_tool
 from harness.tools.registry import ToolRegistry
+from harness.logging import log
 
 class AgentResult(BaseModel):
     answer: str
@@ -18,7 +19,7 @@ async def run_agent(
     prompt_text:str,
     registry: ToolRegistry,
     provider: Provider,
-    max_steps: int = 6
+    max_steps: int = 12
 ) -> AgentResult:
     messages: list[dict] = [
         {"role": "system", "content": prompt_text},
@@ -52,12 +53,15 @@ async def run_agent(
                 content = result.content
             except KeyError:
                 content = f"Error Unknown tool {tc.name}"
+            
+            log.info("tool call", step=step, tool=tc.name, args=tc.arguments, result=content[:150])
+
             messages.append({"role": "tool", "tool_call_id": tc.id, "content": content})
     
     return AgentResult(
         answer = "Stopped before finishing: reached the step limit.",
         steps = max_steps, 
-        stopped = "max_steps",
+        stopped_reason = "max_steps",
         input_tokens = total_in,
         output_tokens = total_out
     )

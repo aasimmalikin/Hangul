@@ -4,15 +4,36 @@ from fastapi import FastAPI
 from harness.logging import configure_logging, log
 from harness.config import get_settings
 from harness.api.routes import ask, health
+from harness.mcp.manager import MCPManager
+from harness.api.routes.ask import _registry
 
 settings = get_settings()
 configure_logging(settings.log_level)
 
+_mcp_manager: MCPManager | None = None
+
 @asynccontextmanager
 
 async def lifespan(app: FastAPI):
+    global _mcp_manager
     log.info("Starting up", app_name = settings.app_name, env = settings.environment)
+    _mcp_manager = MCPManager()
+
+    for name, command, args in [
+        #("git", "uvx", ["mcp-server-git", "--repository", "."]),
+        ("filesystem", "npx", ["-y", "@modelcontextprotocol/server-filesystem", "docs"])
+    ]:
+      try:
+        await _mcp_manager.add_server(name, command, args, _registry)
+      except Exception as e:
+        log.warning("MCP connect failed", error = str(e))
+    
+    log.info("tools ready", tools=[t.name for t in _registry.list()])
+
     yield
+
+    if _mcp_manager is not None:
+        await _mcp_manager.close()
     log.info("harness shutting down")
 
 def create_app() -> FastAPI:

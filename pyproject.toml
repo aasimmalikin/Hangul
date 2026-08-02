@@ -15,7 +15,8 @@ dependencies = [
     "structlog>=24.1",
     "openai>=1.50",
     "jsonschema>=4.23",
-    "tavily-python>=0.5"
+    "tavily-python>=0.5",
+    "mcp>=1.28",
 ]
 
 [build-system]

@@ -1,0 +1,3 @@
+{"ts": 1785751998.2301335, "tool": "filesystem__write_file", "args": {"content": "hello", "path": "test.txt"}, "decision": "needs_approval", "tier": "destructive"}
+{"ts": 1785752173.203619, "tool": "filesystem__list_directory", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1785752174.0580423, "tool": "filesystem__list_directory", "args": {"path": "."}, "decision": "allow", "tier": "safe"}

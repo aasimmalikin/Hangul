@@ -1,3 +1,4 @@
+import json
 from fastapi import APIRouter
 from pydantic import BaseModel, Field
 import structlog
@@ -12,7 +13,31 @@ from harness.tools.builtin.search_docs import SEARCH_DOCS_TOOL
 from harness.tools.builtin.web_search import WEB_SEARCH_TOOL
 from harness.cache.keys import answer_key
 from harness.cache.memory_cache import MemoryCache
-import json
+from harness.policy.policy import ToolPolicy
+from harness.policy.tiers import Tier
+from harness.policy.audit import AuditLog
+
+_audit = AuditLog()
+_policy = ToolPolicy(tiers={
+    "calculator": Tier.SAFE,
+    "search_docs": Tier.SAFE,
+    "web_search": Tier.SAFE,
+    "filesystem__read_file": Tier.SAFE,
+    "filesystem__read_text_file": Tier.SAFE,
+    "filesystem__read_media_file": Tier.SAFE,
+    "filesystem__read_multiple_files": Tier.SAFE,
+    "filesystem__list_directory": Tier.SAFE,
+    "filesystem__list_directory_with_sizes": Tier.SAFE,
+    "filesystem__directory_tree": Tier.SAFE,
+    "filesystem__get_file_info": Tier.SAFE,
+    "filesystem__search_files": Tier.SAFE,
+    "filesystem__list_allowed_directories": Tier.SAFE,
+    "filesystem__write_file": Tier.DESTRUCTIVE,
+    "filesystem__edit_file": Tier.DESTRUCTIVE,
+    "filesystem__create_directory": Tier.DESTRUCTIVE,
+    "filesystem__move_file": Tier.DESTRUCTIVE,
+})
+
 
 router = APIRouter()
 _registry = ToolRegistry()
@@ -72,7 +97,9 @@ async def ask(req: AskRequest)-> AskResponse:
         question = req.question,
         prompt_text = prompt_version.text,
         registry = _registry,
-        provider = get_provider()
+        provider = get_provider(),
+        policy = _policy,
+        audit = _audit,
     )
     await _cache.set(key, json.dumps({
         "answer": result.answer,

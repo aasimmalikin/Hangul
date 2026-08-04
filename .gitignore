@@ -55,6 +55,7 @@ models/
 checkpoints/
 
 # ---- Data and indexes ---------------------------------------
+data/
 data/raw/
 data/interim/
 *.faiss

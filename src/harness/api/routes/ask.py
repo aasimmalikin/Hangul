@@ -16,8 +16,10 @@ from harness.cache.memory_cache import MemoryCache
 from harness.policy.policy import ToolPolicy
 from harness.policy.tiers import Tier
 from harness.policy.audit import AuditLog
+from harness.checkpoint.store import CheckpointStore
 
 _audit = AuditLog()
+_store = CheckpointStore()
 _policy = ToolPolicy(tiers={
     "calculator": Tier.SAFE,
     "search_docs": Tier.SAFE,
@@ -51,6 +53,7 @@ _cache = MemoryCache()
 
 class AskRequest(BaseModel):
     question: str = Field(min_length=1, description = "The user's question.")
+    thread_id: str | None = None
 
 
 class AskResponse(BaseModel):
@@ -100,6 +103,8 @@ async def ask(req: AskRequest)-> AskResponse:
         provider = get_provider(),
         policy = _policy,
         audit = _audit,
+        store = _store,
+        thread_id = run.run_id or req.thread_id
     )
     await _cache.set(key, json.dumps({
         "answer": result.answer,

@@ -31,6 +31,8 @@ async def ingest(doc_dir: str, index_path: str = "data/index.json")->None:
     ver = index_version(chunk_size = CHUNK_SIZE, overlap = OVERLAP, embed_model = embedder.model, corpus_hash= corpus_hash)
     print(f"ingested {n} chunks from {len(files)} files -> {index_path}")
     print(f"index_version: {ver}")
+    
+    Path("data/index_version.txt").write_text(ver)
 
 if __name__ == "__main__":
     asyncio.run(ingest(sys.argv[1] if len(sys.argv) > 1 else "docs"))

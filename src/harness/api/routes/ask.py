@@ -17,7 +17,10 @@ from harness.policy.policy import ToolPolicy
 from harness.policy.tiers import Tier
 from harness.policy.audit import AuditLog
 from harness.checkpoint.store import CheckpointStore
+from harness.obs.tracing import Trace
+from harness.obs.trace_store import TraceStore
 
+_trace_store = TraceStore()
 _audit = AuditLog()
 _store = CheckpointStore()
 _policy = ToolPolicy(tiers={
@@ -48,6 +51,7 @@ _registry.registry(SEARCH_DOCS_TOOL)
 _registry.registry(WEB_SEARCH_TOOL)
 
 _cache = MemoryCache()
+
 
 
 
@@ -94,6 +98,7 @@ async def ask(req: AskRequest)-> AskResponse:
             cached = True
         )
     log.info("cache miss", key = key)
+    trace = Trace(trace_id= run.run_id)
 
 
     result = await run_agent(
@@ -104,8 +109,11 @@ async def ask(req: AskRequest)-> AskResponse:
         policy = _policy,
         audit = _audit,
         store = _store,
-        thread_id = run.run_id or req.thread_id
+        thread_id = run.run_id or req.thread_id, 
+        trace = trace,
     )
+
+    _trace_store.add(trace, model)
     await _cache.set(key, json.dumps({
         "answer": result.answer,
         "steps": result.steps,

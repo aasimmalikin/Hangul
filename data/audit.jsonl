@@ -61,3 +61,30 @@
 {"ts": 1785859947.958908, "tool": "calculator", "args": {"expression": "12 * 45 * 8"}, "decision": "allow", "tier": "safe"}
 {"ts": 1785859947.9616754, "tool": "calculator", "args": {"expression": "12 * 45"}, "decision": "allow", "tier": "safe"}
 {"ts": 1785859947.96404, "tool": "calculator", "args": {"expression": "45 * 8"}, "decision": "allow", "tier": "safe"}
+{"ts": 1785932489.9802618, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1785932590.1024277, "tool": "search_docs", "args": {"query": "pallets capacity Riverside warehouse"}, "decision": "allow", "tier": "safe"}
+{"ts": 1785932594.6004357, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1785932604.1065807, "tool": "calculator", "args": {"expression": "12 aisles * 45 pallet racks per aisle * 8 pallets per rack"}, "decision": "allow", "tier": "safe"}
+{"ts": 1785932607.8760173, "tool": "calculator", "args": {"expression": "12 * 45 * 8"}, "decision": "allow", "tier": "safe"}
+{"ts": 1785933035.7501462, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1785933038.4868145, "tool": "search_docs", "args": {"query": "Riverside warehouse pallets capacity"}, "decision": "allow", "tier": "safe"}
+{"ts": 1785933040.1963742, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1785933048.8245537, "tool": "calculator", "args": {"expression": "12 * 45 * 8"}, "decision": "allow", "tier": "safe"}
+{"ts": 1785933070.965537, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1785933071.9714494, "tool": "search_docs", "args": {"query": "total weight of a fully loaded pallet"}, "decision": "allow", "tier": "safe"}
+{"ts": 1785933100.3282506, "tool": "search_docs", "args": {"query": "total dollar value of the standard pallets in the inventory audit"}, "decision": "allow", "tier": "safe"}
+{"ts": 1785933101.9540365, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1785933102.9483263, "tool": "calculator", "args": {"expression": "1850 * 34"}, "decision": "allow", "tier": "safe"}
+{"ts": 1785933123.4060273, "tool": "search_docs", "args": {"query": "aisle layout"}, "decision": "allow", "tier": "safe"}
+{"ts": 1785933140.6471615, "tool": "filesystem__read_text_file", "args": {"path": "inventory_audit.txt"}, "decision": "allow", "tier": "safe"}
+{"ts": 1785933159.8051481, "tool": "filesystem__list_directory", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1785933160.664284, "tool": "filesystem__list_directory", "args": {"path": "."}, "decision": "allow", "tier": "safe"}
+{"ts": 1785933175.0430698, "tool": "filesystem__read_text_file", "args": {"path": "warehouse.txt"}, "decision": "allow", "tier": "safe"}
+{"ts": 1785933203.6306977, "tool": "filesystem__write_file", "args": {"content": "hello", "path": "test.txt"}, "decision": "needs_approval", "tier": "destructive"}
+{"ts": 1785933225.8328993, "tool": "filesystem__search_files", "args": {"pattern": "warehouse.txt"}, "decision": "allow", "tier": "safe"}
+{"ts": 1785933227.9397073, "tool": "filesystem__search_files", "args": {"pattern": "warehouse.txt", "path": "."}, "decision": "allow", "tier": "safe"}
+{"ts": 1785933229.241511, "tool": "filesystem__move_file", "args": {"source": "warehouse.txt", "destination": ".deleted/warehouse.txt"}, "decision": "needs_approval", "tier": "destructive"}
+{"ts": 1785933244.1655495, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1785933245.0498073, "tool": "calculator", "args": {"expression": "1850 * 34"}, "decision": "allow", "tier": "safe"}
+{"ts": 1785933258.9282138, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1785933261.3287196, "tool": "calculator", "args": {"expression": "12 * 45 * 8"}, "decision": "allow", "tier": "safe"}

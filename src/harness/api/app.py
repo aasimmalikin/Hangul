@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from harness.logging import configure_logging, log
 from harness.config import get_settings
-from harness.api.routes import ask, health
+from harness.api.routes import ask, health, observability
 from harness.mcp.manager import MCPManager
 from harness.api.routes.ask import _registry
 
@@ -40,6 +40,7 @@ def create_app() -> FastAPI:
     app = FastAPI(title = settings.app_name, lifespan = lifespan)
     app.include_router(ask.router)
     app.include_router(health.router)
+    app.include_router(observability.router)
     return app
 
 app = create_app()

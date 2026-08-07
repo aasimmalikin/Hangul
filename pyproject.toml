@@ -17,6 +17,8 @@ dependencies = [
     "jsonschema>=4.23",
     "tavily-python>=0.5",
     "mcp>=1.28",
+    "pypdf",
+    "numpy",
 ]
 
 [build-system]

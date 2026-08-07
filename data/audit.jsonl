@@ -88,3 +88,19 @@
 {"ts": 1785933245.0498073, "tool": "calculator", "args": {"expression": "1850 * 34"}, "decision": "allow", "tier": "safe"}
 {"ts": 1785933258.9282138, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
 {"ts": 1785933261.3287196, "tool": "calculator", "args": {"expression": "12 * 45 * 8"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786102689.1822064, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786102690.5287623, "tool": "search_docs", "args": {"query": "aisles in the warehouse"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786102691.988871, "tool": "search_docs", "args": {"query": "number of aisles"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786102693.48721, "tool": "filesystem__list_directory", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786102694.7838054, "tool": "filesystem__list_directory", "args": {"path": "."}, "decision": "allow", "tier": "safe"}
+{"ts": 1786102696.198897, "tool": "filesystem__read_text_file", "args": {"path": "warehouse.txt"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786103286.9173098, "tool": "search_docs", "args": {"query": "aisles warehouse"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786103290.1988084, "tool": "filesystem__list_directory", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786103291.225086, "tool": "filesystem__list_directory", "args": {"path": "."}, "decision": "allow", "tier": "safe"}
+{"ts": 1786103292.4807842, "tool": "filesystem__read_text_file", "args": {"path": "warehouse.txt"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786103292.4908147, "tool": "filesystem__read_text_file", "args": {"path": "inventory_audit.txt"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786103324.2278585, "tool": "search_docs", "args": {"query": "aisles in the warehouse"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786103325.7889218, "tool": "filesystem__list_directory", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786103327.5809278, "tool": "filesystem__list_directory", "args": {"path": "."}, "decision": "allow", "tier": "safe"}
+{"ts": 1786103328.8954494, "tool": "filesystem__read_text_file", "args": {"path": "warehouse.txt"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786103328.9020135, "tool": "filesystem__read_text_file", "args": {"path": "architecture.md"}, "decision": "allow", "tier": "safe"}

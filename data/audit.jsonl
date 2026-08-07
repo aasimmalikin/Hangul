@@ -104,3 +104,24 @@
 {"ts": 1786103327.5809278, "tool": "filesystem__list_directory", "args": {"path": "."}, "decision": "allow", "tier": "safe"}
 {"ts": 1786103328.8954494, "tool": "filesystem__read_text_file", "args": {"path": "warehouse.txt"}, "decision": "allow", "tier": "safe"}
 {"ts": 1786103328.9020135, "tool": "filesystem__read_text_file", "args": {"path": "architecture.md"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786112329.968236, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786112331.2774043, "tool": "calculator", "args": {"expression": "12 * 45"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786113950.6296632, "tool": "search_docs", "args": {"query": "aisles in the warehouse"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786113953.4485328, "tool": "filesystem__list_directory", "args": {"path": "."}, "decision": "allow", "tier": "safe"}
+{"ts": 1786113955.3717926, "tool": "filesystem__read_text_file", "args": {"path": "warehouse.txt"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786113955.3877943, "tool": "filesystem__read_text_file", "args": {"path": "architecture.md"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786114083.808853, "tool": "search_docs", "args": {"query": "aisles warehouse"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786114089.5019069, "tool": "filesystem__list_directory", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786114090.7479224, "tool": "filesystem__list_directory", "args": {"path": "."}, "decision": "allow", "tier": "safe"}
+{"ts": 1786114091.6118863, "tool": "search_docs", "args": {"query": "aisles"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786114094.3031344, "tool": "filesystem__read_text_file", "args": {"path": "warehouse.txt"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786114094.312267, "tool": "filesystem__read_text_file", "args": {"path": "inventory_audit.txt"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786114224.712936, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786114226.7515738, "tool": "search_docs", "args": {"query": "warehouse aisles"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786114228.491183, "tool": "filesystem__list_directory", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786114229.6950147, "tool": "filesystem__list_directory", "args": {"path": "."}, "decision": "allow", "tier": "safe"}
+{"ts": 1786114231.1807425, "tool": "filesystem__read_text_file", "args": {"path": "warehouse.txt"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786114352.7295563, "tool": "filesystem__write_file", "args": {"content": "hello", "path": "test.txt"}, "decision": "needs_approval", "tier": "destructive"}
+{"ts": 1786114353.552137, "tool": "filesystem__create_directory", "args": {}, "decision": "needs_approval", "tier": "destructive"}
+{"ts": 1786123061.0158641, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786123062.271075, "tool": "calculator", "args": {"expression": "5 * 8"}, "decision": "allow", "tier": "safe"}

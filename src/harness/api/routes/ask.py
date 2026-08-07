@@ -18,7 +18,7 @@ from harness.policy.policy import ToolPolicy
 from harness.policy.tiers import Tier
 from harness.policy.audit import AuditLog
 from harness.checkpoint.store import CheckpointStore
-from harness.obs.tracing import Trace
+from harness.obs.tracing import Trace, cost_usd
 from harness.obs.trace_store import TraceStore
 from harness.api.session import get_session_id
 
@@ -67,6 +67,11 @@ class AskResponse(BaseModel):
     steps: int
     stopped_reason: str
     cached: bool
+    tools_used: list[str] = []
+    safety_blocked: list[str] = []
+    budget_used: dict = {}
+    cost_usd: float = 0.0
+    resumed_from_step: int = 0
 
 
 @router.post("/ask", response_model=AskResponse)
@@ -107,6 +112,12 @@ async def ask(req: AskRequest, session_id: str = Depends(get_session_id)) -> Ask
             steps=data["steps"],
             stopped_reason=data["stopped_reason"],
             cached=True,
+            tools_used = data.get("tools_used", []),
+            safety_blocked = data.get("safety_blocked", []),
+            budget_used = data.get("budget_used", {}),
+            cost_usd = 0.0,
+            resumed_from_step = 0
+
         )
     log.info("cache miss", key=key)
 
@@ -126,10 +137,16 @@ async def ask(req: AskRequest, session_id: str = Depends(get_session_id)) -> Ask
 
     _trace_store.add(trace, model)
 
+    summary = trace.summary()
+    run_cost = cost_usd(model, summary["input_tokens"], summary["output_tokens"])
+
     await _cache.set(key, json.dumps({
         "answer": result.answer,
         "steps": result.steps,
         "stopped_reason": result.stopped_reason,
+        "tools_used": result.tools_used,
+        "safety_blocked": result.safety_blocked,
+        "budget_used": result.budget_used,
     }))
 
     log.info("returning answer", steps=result.steps, stopped_reason=result.stopped_reason,
@@ -142,4 +159,9 @@ async def ask(req: AskRequest, session_id: str = Depends(get_session_id)) -> Ask
         steps=result.steps,
         stopped_reason=result.stopped_reason,
         cached=False,
+        tools_used = result.tools_used,
+        safety_blocked = result.safety_blocked,
+        budget_used = result.budget_used,
+        cost_usd = run_cost, 
+        resumed_from_step = result.resumed_from_step,
     )

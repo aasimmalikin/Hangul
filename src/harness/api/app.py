@@ -1,9 +1,10 @@
 import logging
+from pathlib import Path
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from harness.logging import configure_logging, log
 from harness.config import get_settings
-from harness.api.routes import ask, health, observability, upload, quality
+from harness.api.routes import ask, health, observability, upload, quality, approve
 from harness.mcp.manager import MCPManager
 from harness.api.routes.ask import _registry
 
@@ -17,11 +18,14 @@ _mcp_manager: MCPManager | None = None
 async def lifespan(app: FastAPI):
     global _mcp_manager
     log.info("Starting up", app_name = settings.app_name, env = settings.environment)
+    
+    Path("data/sessions").mkdir(parents = True, exist_ok = True)
+
     _mcp_manager = MCPManager()
 
     for name, command, args in [
         #("git", "uvx", ["mcp-server-git", "--repository", "."]),
-        ("filesystem", "npx", ["-y", "@modelcontextprotocol/server-filesystem", "docs"])
+        ("filesystem", "npx", ["-y", "@modelcontextprotocol/server-filesystem", "docs", "data/sessions"])
     ]:
       try:
         await _mcp_manager.add_server(name, command, args, _registry)
@@ -43,6 +47,7 @@ def create_app() -> FastAPI:
     app.include_router(observability.router)
     app.include_router(upload.router)
     app.include_router(quality.router)
+    app.include_router(approve.router)
     return app
 
 app = create_app()

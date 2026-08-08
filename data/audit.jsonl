@@ -125,3 +125,70 @@
 {"ts": 1786114353.552137, "tool": "filesystem__create_directory", "args": {}, "decision": "needs_approval", "tier": "destructive"}
 {"ts": 1786123061.0158641, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
 {"ts": 1786123062.271075, "tool": "calculator", "args": {"expression": "5 * 8"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786124322.849345, "tool": "web_search", "args": {"query": "current weather in Jammu"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786124957.0252674, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786124957.9905107, "tool": "search_docs", "args": {"query": "pdf file chunked using RAG"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786124995.1451738, "tool": "filesystem__list_directory", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786124996.3859158, "tool": "filesystem__list_directory", "args": {"path": "."}, "decision": "allow", "tier": "safe"}
+{"ts": 1786125038.9380665, "tool": "filesystem__list_directory", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786125039.9115434, "tool": "filesystem__list_directory", "args": {"path": "."}, "decision": "allow", "tier": "safe"}
+{"ts": 1786126520.8073208, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786126522.4352944, "tool": "search_docs", "args": {"query": "Musalman woman ought to receive"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786126523.8936245, "tool": "search_docs", "args": {"query": "Musalman woman"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786126528.468011, "tool": "search_docs", "args": {"query": "rights of Musalman women"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786126530.336195, "tool": "search_docs", "args": {"query": "Musalman"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786126531.7004833, "tool": "filesystem__list_directory", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786126532.7860725, "tool": "filesystem__list_directory", "args": {"path": "."}, "decision": "allow", "tier": "safe"}
+{"ts": 1786126534.2229016, "tool": "filesystem__read_text_file", "args": {"path": "architecture.md"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786126534.2335608, "tool": "filesystem__read_text_file", "args": {"path": "inventory_audit.txt"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786126534.2535124, "tool": "filesystem__read_text_file", "args": {"path": "warehouse.txt"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786126655.0015965, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786126656.0136235, "tool": "search_docs", "args": {"query": "poetry"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786126657.5626097, "tool": "search_docs", "args": {"query": "author of the poetry"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786126659.1543646, "tool": "filesystem__list_directory", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786126660.1650398, "tool": "filesystem__list_directory", "args": {"path": "."}, "decision": "allow", "tier": "safe"}
+{"ts": 1786126661.897853, "tool": "filesystem__read_text_file", "args": {"path": "architecture.md"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786126661.9059715, "tool": "filesystem__read_text_file", "args": {"path": "inventory_audit.txt"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786126661.9184577, "tool": "filesystem__read_text_file", "args": {"path": "warehouse.txt"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786126705.4922853, "tool": "filesystem__list_directory", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786126706.510631, "tool": "filesystem__list_directory", "args": {"path": "."}, "decision": "allow", "tier": "safe"}
+{"ts": 1786126748.4417202, "tool": "filesystem__list_directory", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786126749.657141, "tool": "filesystem__list_directory", "args": {"path": "."}, "decision": "allow", "tier": "safe"}
+{"ts": 1786127429.781717, "tool": "search_docs", "args": {"query": "Aristotle"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786127435.0670776, "tool": "search_docs", "args": {"query": "Aristotle's teachings"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786127436.8977149, "tool": "filesystem__list_directory", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786127438.402878, "tool": "filesystem__list_directory", "args": {"path": "."}, "decision": "allow", "tier": "safe"}
+{"ts": 1786127439.714431, "tool": "filesystem__read_text_file", "args": {"path": "architecture.md"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786127439.7278905, "tool": "filesystem__read_text_file", "args": {"path": "inventory_audit.txt"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786127439.7451265, "tool": "filesystem__read_text_file", "args": {"path": "warehouse.txt"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786127636.283199, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786127637.2428775, "tool": "search_docs", "args": {"query": "What is XGBoost?"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786127638.770821, "tool": "search_docs", "args": {"query": "XGBoost"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786127641.553296, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786127642.7767587, "tool": "web_search", "args": {"query": "What is XGBoost?"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786198654.2940495, "tool": "filesystem__create_directory", "args": {}, "decision": "needs_approval", "tier": "destructive"}
+{"ts": 1786201264.6779184, "tool": "filesystem__create_directory", "args": {}, "decision": "needs_approval", "tier": "destructive"}
+{"ts": 1786201297.1546237, "tool": "filesystem__create_directory", "args": {"path": "data/sessions/hitl6"}, "decision": "needs_approval", "tier": "destructive"}
+{"ts": 1786201508.6694686, "tool": "filesystem__list_allowed_directories", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786201648.3912184, "tool": "filesystem__list_allowed_directories", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786202005.0774026, "tool": "filesystem__write_file", "args": {"content": "hello world", "path": "notes.txt"}, "decision": "needs_approval", "tier": "destructive"}
+{"ts": 1786202519.212958, "tool": "filesystem__write_file", "args": {"path": "/session/notes.txt", "content": "hello world"}, "decision": "needs_approval", "tier": "destructive"}
+{"ts": 1786202682.946926, "tool": "filesystem__list_allowed_directories", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786203846.7497063, "tool": "filesystem__write_file", "args": {"path": "/mnt/data/notes.txt", "content": "hello world"}, "decision": "needs_approval", "tier": "destructive"}
+{"ts": 1786203974.4211686, "tool": "filesystem__write_file", "args": {"contents": "hello world", "path": "notes.txt"}, "decision": "needs_approval", "tier": "destructive"}
+{"ts": 1786204002.7737389, "tool": "filesystem__write_file", "args": {"path": "notes.txt", "contents": "hello world"}, "decision": "needs_approval", "tier": "destructive"}
+{"ts": 1786207054.4806807, "tool": "filesystem__write_file", "args": {"path": "notes.txt", "content": "hello world"}, "decision": "needs_approval", "tier": "destructive"}
+{"ts": 1786207434.103886, "tool": "filesystem__write_file", "args": {"content": "hello world", "path": "/home/aasim/projects/agentic-qa/data/sessions/hitlH/notes.txt"}, "decision": "needs_approval", "tier": "destructive"}
+{"ts": 1786207736.577335, "tool": "filesystem__list_directory", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786207736.5791707, "tool": "filesystem__read_text_file", "args": {"filename": "report.txt"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786207739.009584, "tool": "filesystem__read_text_file", "args": {"path": "report.txt"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786207746.8595498, "tool": "filesystem__list_directory", "args": {"path": "."}, "decision": "allow", "tier": "safe"}
+{"ts": 1786208549.2011755, "tool": "filesystem__write_file", "args": {"content": "secret-A", "path": "/home/aasim/projects/agentic-qa/data/sessions/sessA/mine.txt"}, "decision": "needs_approval", "tier": "destructive"}
+{"ts": 1786208592.522915, "tool": "filesystem__list_directory", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786208593.4150004, "tool": "filesystem__list_directory", "args": {"path": "."}, "decision": "allow", "tier": "safe"}
+{"ts": 1786208620.1878288, "tool": "filesystem__list_directory", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786208621.2899828, "tool": "filesystem__list_directory", "args": {"path": "."}, "decision": "allow", "tier": "safe"}
+{"ts": 1786208842.5862136, "tool": "filesystem__write_file", "args": {"content": "# Grocery List\n\n- Apples\n- Bananas\n- Bread\n- Milk\n- Eggs", "path": "/home/aasim/projects/agentic-qa/data/sessions/try1/shopping.md"}, "decision": "needs_approval", "tier": "destructive"}
+{"ts": 1786209009.6420286, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786209010.4686368, "tool": "web_search", "args": {"query": "current population of Japan 2023"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786209072.7922397, "tool": "filesystem__write_file", "args": {"path": "/home/aasim/projects/agentic-qa/data/sessions/web1/japan.txt", "content": "The estimated population of Japan in 2023 is 124.4 million. Source: https://en.wikipedia.org/wiki/Demographics_of_Japan"}, "decision": "needs_approval", "tier": "destructive"}

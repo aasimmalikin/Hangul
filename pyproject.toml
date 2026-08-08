@@ -19,6 +19,8 @@ dependencies = [
     "mcp>=1.28",
     "pypdf",
     "numpy",
+    "streamlit>=1.60",
+    "requests>=2.32",
 ]
 
 [build-system]

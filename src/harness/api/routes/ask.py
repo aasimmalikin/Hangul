@@ -1,6 +1,7 @@
 import json
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel, Field
+from pathlib import Path
 import structlog
 from harness.agent.loop import run_agent
 from harness.logging import log
@@ -12,6 +13,7 @@ from harness.tools.builtin.calculator import CALCULATOR_TOOL
 from harness.tools.builtin.search_docs import SEARCH_DOCS_TOOL
 from harness.tools.builtin.web_search import WEB_SEARCH_TOOL
 from harness.tools.builtin.search_docs_session import make_search_docs_tool
+from harness.tools.builtin.filesystem_session import wrap_filesystem_tool
 from harness.cache.keys import answer_key
 from harness.cache.memory_cache import MemoryCache
 from harness.policy.policy import ToolPolicy
@@ -54,10 +56,18 @@ _registry.registry(WEB_SEARCH_TOOL)
 
 _cache = MemoryCache()
 
+DOCS_ONLY_INSTRUCTION = (
+    "\n\nIMPORTANT: Answer ONLY using the search_docs tool to look in the user's "
+    "uploaded documents. Do not use outside knowledge. If the answer is not found "
+    "in the documents, reply exactly: 'I couldn't find that in your document.' "
+    "Never guess or use information beyond the retrieved document passages."
+)
+
 
 class AskRequest(BaseModel):
     question: str = Field(min_length=1, description="The user's question.")
     thread_id: str | None = None
+    docs_only: bool = False
 
 
 class AskResponse(BaseModel):
@@ -72,6 +82,7 @@ class AskResponse(BaseModel):
     budget_used: dict = {}
     cost_usd: float = 0.0
     resumed_from_step: int = 0
+    pending_tool: dict | None = None
 
 
 @router.post("/ask", response_model=AskResponse)
@@ -83,15 +94,38 @@ async def ask(req: AskRequest, session_id: str = Depends(get_session_id)) -> Ask
     structlog.contextvars.clear_contextvars()
     structlog.contextvars.bind_contextvars(run_id=run.run_id, prompt=prompt_version.version)
 
-    log.info("Received question", question=req.question)
+    log.info("Received question", question=req.question, docs_only=req.docs_only)
+
 
     session_registry = ToolRegistry()
-    session_registry.registry(CALCULATOR_TOOL)
-    session_registry.registry(WEB_SEARCH_TOOL)
-    session_registry.registry(make_search_docs_tool(session_id))
-    for t in _registry.list():
-        if t.name.startswith("filesystem__"):
-            session_registry.registry(t)
+    
+    if not req.docs_only:
+        session_registry.registry(CALCULATOR_TOOL)
+        session_registry.registry(WEB_SEARCH_TOOL)
+        session_registry.registry(make_search_docs_tool(session_id))
+        for t in _registry.list():
+            if t.name.startswith("filesystem__"):
+                session_registry.registry(wrap_filesystem_tool(t, session_id))
+    
+    session_dir = (Path("data/sessions") / session_id).resolve()
+    session_dir.mkdir(parents=True, exist_ok=True)
+    
+
+    session_folder_note = (
+         "\\n\\n=== CRITICAL FILE-PATH RULE (follow exactly) ===\\n"
+        f"The user's folder is EXACTLY this absolute path: {session_dir}\\n"
+        "This folder ALREADY EXISTS. For ANY file operation on the user's files "
+        "(write, read, list, edit), you MUST use this exact absolute path.\\n"
+        f"To create a file named notes.txt, call write_file with path='{session_dir}/notes.txt'.\\n"
+        "You are FORBIDDEN from using a bare filename like 'notes.txt' or an invented "
+        f"path like '/mnt/session/'. Always prefix with '{session_dir}/'.\\n"
+        "Do NOT call create_directory — the folder already exists.\\n"
+        "=== END RULE ==="
+    )
+    prompt_text = prompt_version.text + session_folder_note
+
+    if req.docs_only:
+        prompt_text = prompt_text + DOCS_ONLY_INSTRUCTION
 
     key = answer_key(
         question=req.question,
@@ -164,4 +198,5 @@ async def ask(req: AskRequest, session_id: str = Depends(get_session_id)) -> Ask
         budget_used = result.budget_used,
         cost_usd = run_cost, 
         resumed_from_step = result.resumed_from_step,
+        pending_tool = result.pending_tool,
     )

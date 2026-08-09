@@ -1,0 +1,12 @@
+Verdant Home Goods — Product Catalog Summary
+
+The catalog contains 240 products across 6 categories.
+The best-selling category is kitchenware, with 68 products.
+Average product price is 34 dollars.
+The most expensive item is a dining set priced at 890 dollars.
+The company ships to 22 countries.
+Standard shipping takes 5 business days.
+The return window is 30 days.
+Products carry a 2-year warranty.
+The customer satisfaction rating is 4.6 out of 5.
+The catalog is updated 4 times per year.

@@ -49,6 +49,7 @@ async def run_agent(
     thread_id: str,
     trace: Trace,
     approved_action: dict | None = None,
+    force_tool_use: bool = False,
     max_steps: int = 20,
     max_tokens: int = 50_000,
 ) -> AgentResult:
@@ -67,6 +68,7 @@ async def run_agent(
     tools_used: list[str] = []
     safety_blocked: list[str] = []
     resumed_from = cp.step
+    first_step = cp.step + 1   # the step number of the very first iteration
 
     budget = Budget(max_steps=max_steps, max_tokens=max_tokens)
 
@@ -109,7 +111,8 @@ async def run_agent(
 
             with trace.span("gen_ai.chat",
                             **{"gen_ai.request.model": provider.model}) as sp:
-                turn = await provider.chat(messages, tools)
+                tc_choice = "required" if (force_tool_use and step == first_step) else None
+                turn = await provider.chat(messages, tools, tool_choice=tc_choice)
             sp.attributes["gen_ai.usage.input_tokens"] = turn.input_tokens
             sp.attributes["gen_ai.usage.output_tokens"] = turn.output_tokens
 

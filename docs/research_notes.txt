@@ -1,0 +1,12 @@
+Project Aurora — Research Notes
+
+Project Aurora is studying battery energy density improvements.
+The current prototype achieves 320 watt-hours per kilogram.
+The target for 2027 is 500 watt-hours per kilogram.
+The research team consists of 12 scientists.
+Testing is conducted across 3 laboratory sites.
+The lead researcher is Dr. Sofia Andersson.
+The project has a budget of 8 million dollars over 3 years.
+Each test cycle takes 6 weeks to complete.
+So far, 14 test cycles have been completed.
+The prototype uses a silicon-anode design.

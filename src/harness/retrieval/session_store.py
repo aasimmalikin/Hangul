@@ -24,13 +24,13 @@ class _SessionIndex:
     def search(self, query_embedding: list[float], k: int = 4)->list[float]:
         if self._matrix is None:
             return []
-        q = np.asaray(query_embedding, dtype = np.float32)
+        q = np.asarray(query_embedding, dtype = np.float32)
         qn = np.linalg.norm(q)
         if qn:
             q = q/qn
         scores = self._matrix @ q
         top = np.argsort(scores)[::-1][:k]
-        return [{"text": self.texts[i], "source": self.sources[i], "score": float(scores(i))}for i in top]
+        return [{"text": self.texts[i], "source": self.sources[i], "score": float(scores[i])}for i in top]
     
 class SessionVectorStore:
 

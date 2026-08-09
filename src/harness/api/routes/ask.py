@@ -56,12 +56,13 @@ _registry.registry(WEB_SEARCH_TOOL)
 
 _cache = MemoryCache()
 
-DOCS_ONLY_INSTRUCTION = (
-    "\n\nIMPORTANT: Answer ONLY using the search_docs tool to look in the user's "
-    "uploaded documents. Do not use outside knowledge. If the answer is not found "
-    "in the documents, reply exactly: 'I couldn't find that in your document.' "
-    "Never guess or use information beyond the retrieved document passages."
-)
+DOCS_ONLY_INSTRUCTION = ("\\n\\nYou are in DOCUMENTS-ONLY mode. You have exactly one tool: search_docs. "
+    "For EVERY question you MUST immediately call the search_docs tool with a query "
+    "derived from the question. Do NOT reply with text like 'let me check' or "
+    "'I will look at the documents' first. Your VERY FIRST action must be to call "
+    "search_docs. After you receive the search results, answer using ONLY those "
+    "results. If the results do not contain the answer, reply exactly: "
+    "'I couldn't find that in your document.' Never answer from your own knowledge.")
 
 
 class AskRequest(BaseModel):
@@ -98,11 +99,14 @@ async def ask(req: AskRequest, session_id: str = Depends(get_session_id)) -> Ask
 
 
     session_registry = ToolRegistry()
-    
+
+    # search_docs is ALWAYS available — it is the one tool docs-only mode needs
+    session_registry.registry(make_search_docs_tool(session_id))
+
+    # the other tools are only added when NOT in docs-only mode
     if not req.docs_only:
         session_registry.registry(CALCULATOR_TOOL)
         session_registry.registry(WEB_SEARCH_TOOL)
-        session_registry.registry(make_search_docs_tool(session_id))
         for t in _registry.list():
             if t.name.startswith("filesystem__"):
                 session_registry.registry(wrap_filesystem_tool(t, session_id))
@@ -159,7 +163,7 @@ async def ask(req: AskRequest, session_id: str = Depends(get_session_id)) -> Ask
 
     result = await run_agent(
         question=req.question,
-        prompt_text=prompt_version.text,
+        prompt_text=prompt_text,
         registry=session_registry,
         provider=get_provider(),
         policy=_policy,
@@ -167,6 +171,7 @@ async def ask(req: AskRequest, session_id: str = Depends(get_session_id)) -> Ask
         store=_store,
         thread_id=run.run_id,
         trace=trace,
+        force_tool_use=req.docs_only,
     )
 
     _trace_store.add(trace, model)

@@ -9,22 +9,35 @@ from harness.eval.dataset import load_case
 from harness.eval.runner import run_eval
 from harness.eval.openai_judge import OpenAIJudge
 from harness.agent.loop import run_agent
+from harness.obs.tracing import Trace
 from harness.prompts.registry import get_prompt
 from harness.providers import get_provider
 from harness.api.routes.ask import _registry, _policy, _audit, _store
+from harness.tools.registry import ToolRegistry
+from harness.tools.builtin.search_docs import SEARCH_DOCS_TOOL
+from harness.tools.builtin.calculator import CALCULATOR_TOOL
 import uuid
 
+_eval_registry = ToolRegistry()
+_eval_registry.registry(SEARCH_DOCS_TOOL)
+_eval_registry.registry(CALCULATOR_TOOL)
+
+
 async def run_fn(question: str) -> tuple[str, str]:
-    """Run the real agent on one question, return (answer, retrieved_context)."""
+    """Run the real agent on one question, return (answer, retrieved_context).
+    Uses a docs-only registry (search_docs + calculator, no web) so the eval
+    measures document-grounded QA, not web lookups."""
+    tid = "eval-" + uuid.uuid4().hex[:12]
     result = await run_agent(
         question=question,
         prompt_text=get_prompt("system_agent").text,
-        registry=_registry,
+        registry=_eval_registry,
         provider=get_provider(),
         policy=_policy,
         audit=_audit,
         store=_store,
-        thread_id="eval-" + uuid.uuid4().hex[:12],
+        thread_id=tid,
+        trace=Trace(trace_id=tid),
     )
     
     return result.answer, result.retrieved_context

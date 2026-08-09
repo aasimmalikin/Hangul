@@ -1,0 +1,19 @@
+Harbor Freight Logistics — Q4 Operations Report
+
+FLEET
+The company operates a fleet of 54 delivery trucks.
+Each truck completes an average of 12 deliveries per day.
+The fleet covers 3 regional zones.
+
+WAREHOUSE
+The central warehouse spans 85,000 square feet.
+It holds 14 loading docks.
+Peak daily throughput is 9,200 packages.
+
+STAFFING
+There are 145 warehouse staff and 54 drivers.
+The operations director is Priya Nair.
+
+PERFORMANCE
+On-time delivery rate was 94 percent in Q4.
+Average cost per delivery was 6 dollars and 50 cents.

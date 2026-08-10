@@ -7,7 +7,7 @@ from harness.tools.base import Tool
 def adapt_mcp_tool(client: MCPClient, mcp_tools: list) -> list[Tool]:
     tools: list[Tool] = []
     for mt in mcp_tools:
-        schema = mt.inputSchema or {}
+        schema = getattr(mt, "input_schema", None) or getattr(mt, "inputSchema", None) or {}
         required = schema.get("required", [])
 
         def make_handler(tool_name: str, required_fields: list):

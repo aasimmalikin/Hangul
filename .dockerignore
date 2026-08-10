@@ -1,16 +1,23 @@
-.venv/
+# Python cruft
 __pycache__/
 *.pyc
-.git/
-.github/
-infra/
-docs/
-tests/
-evals/
-cassettes/
-*.md
-.env
-.env.*
+*.pyo
 .pytest_cache/
-.mypy_cache/
 .ruff_cache/
+
+# Virtual env (the image builds its own)
+.venv/
+venv/
+
+# Local runtime data that shouldn't ship
+data/sessions/
+data/audit.jsonl
+
+# Secrets — never bake these into an image
+.env
+*.env
+.streamlit/secrets.toml
+
+# Git and OS noise
+.git/
+.DS_Store

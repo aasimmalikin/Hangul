@@ -58,6 +58,13 @@ checkpoints/
 data/
 data/raw/
 data/interim/
+# but DO commit the eval set, baseline, index, and eval runs (portfolio + build needs them)
+!data/evalset.jsonl
+!data/eval_baseline.json
+!data/index.json
+!data/index_version.txt
+!data/eval_runs/
+!data/eval_runs/**
 *.faiss
 *.duckdb
 *.sqlite

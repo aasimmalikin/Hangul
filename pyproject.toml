@@ -31,6 +31,10 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools.packages.find]
 where = ["src"]
 
+# include non-Python data files (prompt templates) in the installed package
+[tool.setuptools.package-data]
+"harness.prompts" = ["templates/*.txt"]
+
 [tool.ruff]
 line-length = 100
 src = ["src"]

@@ -6,7 +6,7 @@ class Settings(BaseSettings):
     """Application configuration settings."""
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
     app_name: str = "agentic-qa"
-    environment: str = Literal["dev", "prod"] 
+    environment: Literal["dev", "prod"] = "dev"
     log_level: str = "INFO"
     openai_api_key: str | None = None
     model: str = "gpt-4o-mini"

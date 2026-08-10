@@ -79,7 +79,7 @@ with st.sidebar:
 
     st.divider()
     st.markdown("**Upload a document**")
-    up = st.file_uploader("Upload txt, md, or pdf", type=["txt", "md", "pdf"],
+    up = st.file_uploader("Upload txt, md, or pdf (max 10MB)", type=["txt", "md", "pdf"],
                           label_visibility="collapsed")
     if up is not None and up.name not in st.session_state.uploaded:
         with st.spinner(f"Indexing {up.name}…"):

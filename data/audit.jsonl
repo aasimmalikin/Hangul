@@ -579,3 +579,7 @@
 {"ts": 1786532287.3176959, "tool": "filesystem__read_text_file", "args": {"path": "weather_note.txt"}, "decision": "allow", "tier": "safe"}
 {"ts": 1786532327.682982, "tool": "filesystem__list_directory", "args": {}, "decision": "allow", "tier": "safe"}
 {"ts": 1786532328.6448355, "tool": "filesystem__list_directory", "args": {"path": "."}, "decision": "allow", "tier": "safe"}
+{"ts": 1786536340.9017196, "tool": "web_search", "args": {"query": "current USD to INR exchange rate"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786536363.2017853, "tool": "web_search", "args": {"query": "current temperature in Jammu"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786536404.2502494, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786536405.4084346, "tool": "web_search", "args": {"query": "current INR to USD exchange rate"}, "decision": "allow", "tier": "safe"}

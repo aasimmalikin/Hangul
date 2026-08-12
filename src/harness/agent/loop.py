@@ -1,5 +1,4 @@
 import json
-# fe4559c1bcf54fdfa04028453ff7f779
 from pydantic import BaseModel, Field
 
 from harness.providers.base import Provider
@@ -91,6 +90,10 @@ async def run_agent(
                 content = result.content
             except KeyError:
                 content = f"Error: unknown tool {tc.name}"
+            except Exception as e:
+                content = (f"Error: tool '{tc.name}' failed ({type(e).__name__}). "
+                           "Do not retry the same call; try a different approach "
+                           "or answer with what you have.")
         cp.completed_calls[key] = content
         return content
 
@@ -204,6 +207,10 @@ async def run_agent(
                             content = result.content
                         except KeyError:
                             content = f"Error: unknown tool {tc.name}"
+                        except Exception as e:
+                            content = (f"Error: tool '{tc.name}' failed ({type(e).__name__}). "
+                                       "Do not retry the same call; try a different approach "
+                                       "or answer with what you have.")
                     cp.completed_calls[key] = content
 
                 if "approval" in content.lower() or "not executed" in content.lower():

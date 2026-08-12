@@ -488,3 +488,94 @@
 {"ts": 1786286757.788269, "tool": "search_docs", "args": {"query": "CEO of Harbor Freight Logistics"}, "decision": "allow", "tier": "safe"}
 {"ts": 1786286762.1651204, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
 {"ts": 1786286763.137355, "tool": "search_docs", "args": {"query": "Project Aurora battery patent number"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786529454.4756732, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786529455.5658145, "tool": "web_search", "args": {"query": "recent news about AI"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786529587.7720184, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786529589.405719, "tool": "web_search", "args": {"query": "recent news about AI"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786529595.5189223, "tool": "web_search", "args": {"query": "recent news about artificial intelligence"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786529596.8179789, "tool": "web_search", "args": {"query": "recent developments in artificial intelligence"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786529601.9153311, "tool": "web_search", "args": {"query": "recent news about AI technology"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786529603.2595975, "tool": "web_search", "args": {"query": "recent news about artificial intelligence in October 2023"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786529604.3324957, "tool": "web_search", "args": {"query": "latest news on AI"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786529605.3130603, "tool": "web_search", "args": {"query": "latest artificial intelligence news"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786529674.785814, "tool": "filesystem__write_file", "args": {"path": "/home/aasim/projects/agentic-qa/data/sessions/sess-53562a7aa31444ae/AI.txt", "content": "Recent news about AI includes a surge in adoption across various industries, highlighted by the implementation of generative AI tools in customer service and content creation. Concerns about ethical implications, data privacy, and job displacement have also risen, prompting discussions about regulatory measures. Additionally, advancements in AI research have led to improved language models and capabilities, fostering innovations in sectors like healthcare, finance, and education. Tech companies continue to compete in the AI space, focusing on enhancing user experience and expanding applications."}, "decision": "needs_approval", "tier": "destructive"}
+{"ts": 1786529695.5701594, "tool": "filesystem__read_text_file", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786529698.88705, "tool": "filesystem__read_text_file", "args": {"path": "AI.txt"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786529731.0973208, "tool": "filesystem__list_directory", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786529733.1518679, "tool": "filesystem__list_directory", "args": {"path": "."}, "decision": "allow", "tier": "safe"}
+{"ts": 1786529736.9584968, "tool": "filesystem__move_file", "args": {"source": "AI.txt", "destination": "/home/aasim/projects/agentic-qa/data/sessions/sess-53562a7aa31444ae/AI.txt.deleted"}, "decision": "needs_approval", "tier": "destructive"}
+{"ts": 1786529836.8479517, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786529839.1406002, "tool": "web_search", "args": {"query": "Recent news on AI"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786529841.5802767, "tool": "web_search", "args": {"query": "Recent news on AI advancements"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786529844.524191, "tool": "web_search", "args": {"query": "Recent news on artificial intelligence"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786529870.3448472, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786529870.1578119, "tool": "web_search", "args": {"query": "recent news on AI"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786529901.5979922, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786529901.3314524, "tool": "web_search", "args": {"query": "recent news on AI"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786529902.4790823, "tool": "web_search", "args": {"query": "latest news on artificial intelligence"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786529932.2482076, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786529941.3830442, "tool": "web_search", "args": {"query": "recent news on AI"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786529996.328307, "tool": "web_search", "args": {"query": "current weather Jammu"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786529997.3636992, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786529999.5105393, "tool": "web_search", "args": {"query": "current weather in Jammu"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786530019.055677, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786530020.1617072, "tool": "web_search", "args": {"query": "recent news in India"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786530021.37726, "tool": "web_search", "args": {"query": "latest news in India"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786530117.5207481, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786530118.5442238, "tool": "web_search", "args": {"query": "recent news on AI"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786530120.464492, "tool": "web_search", "args": {"query": "recent news on artificial intelligence"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786530306.5146635, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786530307.6258535, "tool": "web_search", "args": {"query": "recent updates in AI technology October 2023"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786530308.5222309, "tool": "web_search", "args": {"query": "recent AI updates October 2023"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786530309.501251, "tool": "web_search", "args": {"query": "AI technology news updates October 2023"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786530310.5752528, "tool": "web_search", "args": {"query": "AI news updates last week"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786530345.1524754, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786530346.395879, "tool": "web_search", "args": {"query": "RAG (Retrieval-Augmented Generation)"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531366.5745947, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531368.3038986, "tool": "web_search", "args": {"query": "latest developments in AI", "country": "US"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531369.6699705, "tool": "web_search", "args": {"query": "latest developments in AI"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531411.8888795, "tool": "web_search", "args": {"query": "current weather in Jammu"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531547.0098755, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531548.0059993, "tool": "web_search", "args": {"query": "current USD to INR exchange rate"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531552.6075304, "tool": "calculator", "args": {"expression": "45000 * 95.2207"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531688.5105438, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531688.5132558, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531690.0279746, "tool": "search_docs", "args": {"query": "total revenue"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531690.5070376, "tool": "web_search", "args": {"query": "Microsoft annual revenue 2023"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531693.576824, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531694.9457242, "tool": "calculator", "args": {"expression": "281724000000 / 82000000"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531694.9476597, "tool": "calculator", "args": {"expression": "82000000 / 281724000000"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531743.5225775, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531744.624349, "tool": "web_search", "args": {"query": "recent major AI model releases 2026"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531754.2229342, "tool": "filesystem__write_file", "args": {"path": "/home/aasim/projects/agentic-qa/data/sessions/sess-0a7e3beccc044213/ai_releases.txt", "content": "1. **Kimi K3** by Moonshot AI (Released: July 17, 2026)  \n   - The world's largest open-weight AI model, rivaling major American systems.  \n   - Dominates coding tests and comes amid China's push to shape the global AI order.\n\n2. **Muse Spark 1.2** by Meta (Released: August 5, 2026)  \n   - A major update in the Muse series by Meta, focusing on improvements in capabilities and performance.\n\n3. **Qwen3-Coder-Next** by Alibaba (Released: Early 2026)  \n   - An efficient coding model designed for agentic coding, close in performance to top closed models while being operable on consumer hardware."}, "decision": "needs_approval", "tier": "destructive"}
+{"ts": 1786531813.9985323, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531815.157289, "tool": "web_search", "args": {"query": "major AI model releases 2026"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531821.7920527, "tool": "filesystem__write_file", "args": {"path": "/home/aasim/projects/agentic-qa/data/sessions/sess-0a7e3beccc044213/ai_release_s.txt", "content": "1. **Muse Spark 1.2** (Released: August 5, 2026)\n   - Developed by Meta, this latest iteration of the Muse Spark series provides enhanced capabilities and efficiencies, focusing on multimodal functionalities.\n\n2. **GPT-4o (Omni)** (Current Release)\n   - OpenAI's flagship model retains the top position in cloud environments, showcasing high intelligence with multimodal capabilities supporting text, images, and audio.\n\n3. **GPT-5 Family** (Upcoming)\n   - The new generation from OpenAI, including reasoning model o4-mini, is expected to transition from preview to production scale shortly, indicating major advancements in AI.\n\nKey trends in 2026 include improvements in model efficiency and common implementation of multimodal capabilities among leading AI models."}, "decision": "needs_approval", "tier": "destructive"}
+{"ts": 1786531851.4748635, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531852.624826, "tool": "web_search", "args": {"query": "current population of India"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531855.2294428, "tool": "web_search", "args": {"query": "current population of the United States"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531861.0240245, "tool": "web_search", "args": {"query": "current population of the United States 2026"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531863.6432464, "tool": "web_search", "args": {"query": "current population of India 2026"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531864.8819451, "tool": "web_search", "args": {"query": "current population of United States 2026"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531867.4422767, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531869.0059392, "tool": "calculator", "args": {"expression": "(1476527576 / 349236475) * 100"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531869.0081692, "tool": "calculator", "args": {"expression": "1476527576 - 349236475"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531933.2627397, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531934.4798534, "tool": "search_docs", "args": {"query": "headquarters city"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531936.6970713, "tool": "web_search", "args": {"query": "current weather in Austin Texas"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786531944.0568912, "tool": "filesystem__write_file", "args": {"path": "/home/aasim/projects/agentic-qa/data/sessions/sess-0a7e3beccc044213/weather_note.txt", "content": "Current weather in Austin, Texas:\n- Temperature: 27.1\u00b0C (80.8\u00b0F)\n- Condition: Overcast\n- Wind: 9.6 mph from the south\n- Humidity: 76%\n- Chance of rain: 20%"}, "decision": "needs_approval", "tier": "destructive"}
+{"ts": 1786532005.664142, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786532019.166551, "tool": "web_search", "args": {"query": "most recent Nobel Prize in Physics winner 2023"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786532126.0015826, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786532128.14936, "tool": "web_search", "args": {"query": "latest developments in large language models this week"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786532129.7588382, "tool": "web_search", "args": {"query": "most recent SpaceX launch and its outcome"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786532216.672586, "tool": "filesystem__list_directory", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786532218.1340485, "tool": "filesystem__list_directory", "args": {"path": "."}, "decision": "allow", "tier": "safe"}
+{"ts": 1786532283.6464043, "tool": "filesystem__list_directory", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786532284.7434366, "tool": "filesystem__list_directory", "args": {"path": "."}, "decision": "allow", "tier": "safe"}
+{"ts": 1786532287.2362566, "tool": "filesystem__read_text_file", "args": {"path": "ai_release_s.txt"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786532287.2815626, "tool": "filesystem__read_text_file", "args": {"path": "ai_releases.txt"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786532287.2958148, "tool": "filesystem__read_text_file", "args": {"path": "nimbus_analytics.txt"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786532287.3176959, "tool": "filesystem__read_text_file", "args": {"path": "weather_note.txt"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786532327.682982, "tool": "filesystem__list_directory", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786532328.6448355, "tool": "filesystem__list_directory", "args": {"path": "."}, "decision": "allow", "tier": "safe"}

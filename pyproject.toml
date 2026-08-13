@@ -41,3 +41,10 @@ src = ["src"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]
+
+[project.optional-dependencies]
+dev = [
+    "locust>=2.0",   # load testing
+    "ruff",          # linting
+    "pytest>=8.0",   # tests
+]

@@ -82,6 +82,8 @@ class AskResponse(BaseModel):
     safety_blocked: list[str] = []
     budget_used: dict = {}
     cost_usd: float = 0.0
+    input_tokens: int = 0
+    output_tokens: int = 0
     resumed_from_step: int = 0
     pending_tool: dict | None = None
 
@@ -202,6 +204,8 @@ async def ask(req: AskRequest, session_id: str = Depends(get_session_id)) -> Ask
         safety_blocked = result.safety_blocked,
         budget_used = result.budget_used,
         cost_usd = run_cost, 
+        input_tokens = result.input_tokens,
+        output_tokens = result.output_tokens,
         resumed_from_step = result.resumed_from_step,
         pending_tool = result.pending_tool,
     )

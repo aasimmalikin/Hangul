@@ -583,3 +583,153 @@
 {"ts": 1786536363.2017853, "tool": "web_search", "args": {"query": "current temperature in Jammu"}, "decision": "allow", "tier": "safe"}
 {"ts": 1786536404.2502494, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
 {"ts": 1786536405.4084346, "tool": "web_search", "args": {"query": "current INR to USD exchange rate"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786560779.7644508, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786560780.7701318, "tool": "calculator", "args": {"expression": "2 + 2"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786601874.2659984, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786601875.4222405, "tool": "calculator", "args": {"expression": "2 + 2"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606897.0039625, "tool": "web_search", "args": {"query": "current USD to INR exchange rate"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606897.2151618, "tool": "web_search", "args": {"query": "current gold price per ounce"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606897.2652545, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606897.4156559, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606898.4949462, "tool": "web_search", "args": {"query": "current president of France"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606898.803943, "tool": "web_search", "args": {"query": "latest version of Python"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606902.8134875, "tool": "web_search", "args": {"query": "current population of Japan 2023"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606903.253399, "tool": "web_search", "args": {"query": "current Bitcoin price in USD"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606904.723631, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606904.8396654, "tool": "web_search", "args": {"query": "current gold price per ounce"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606905.8571193, "tool": "web_search", "args": {"query": "current USD to INR exchange rate"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606907.0765078, "tool": "calculator", "args": {"expression": "4398.04 * 12"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606907.4137304, "tool": "web_search", "args": {"query": "current Bitcoin price"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606907.862645, "tool": "calculator", "args": {"expression": "45000 * 95.2207"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606909.5514884, "tool": "calculator", "args": {"expression": "3.5 * 63567.34"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606911.096056, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606911.1570425, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606911.4814162, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606912.2345965, "tool": "calculator", "args": {"expression": "84000 * 0.15"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606912.623752, "tool": "web_search", "args": {"query": "current population of India"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606913.0187976, "tool": "web_search", "args": {"query": "current gold price per ounce"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606913.8741038, "tool": "web_search", "args": {"query": "current silver price per ounce"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606914.3923674, "tool": "web_search", "args": {"query": "current population of United States"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606914.4406798, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606915.356476, "tool": "calculator", "args": {"expression": "2340 * 18"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606915.9871655, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606917.3847096, "tool": "calculator", "args": {"expression": "50000 * (1 + 0.08)^3"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606918.49465, "tool": "calculator", "args": {"expression": "1477527450 / 349236475"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606918.6394007, "tool": "calculator", "args": {"expression": "50000 * (1 + 0.08)**3"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606918.8660972, "tool": "web_search", "args": {"query": "current USD to INR exchange rate"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606920.1147022, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606921.795048, "tool": "calculator", "args": {"expression": "4398.04 * 5"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606921.7977216, "tool": "calculator", "args": {"expression": "65.65 * 5"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606922.9773476, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606923.3030112, "tool": "web_search", "args": {"query": "current price of gold per ounce October 2023"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606924.0303667, "tool": "web_search", "args": {"query": "current president of France 2023"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606924.3381038, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606925.3469582, "tool": "web_search", "args": {"query": "latest version of Python"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606926.6872864, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606927.6947975, "tool": "web_search", "args": {"query": "current population of Japan 2023"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606929.8329885, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606929.882462, "tool": "web_search", "args": {"query": "current Bitcoin price in USD"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606931.1611261, "tool": "web_search", "args": {"query": "current USD to INR exchange rate"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606931.2929633, "tool": "web_search", "args": {"query": "current price of gold per ounce"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606933.2504117, "tool": "web_search", "args": {"query": "current Bitcoin price"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606934.4936182, "tool": "calculator", "args": {"expression": "45000 * 95.2207"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606935.2260628, "tool": "calculator", "args": {"expression": "4398.04 * 12"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606936.226059, "tool": "calculator", "args": {"expression": "3.5 * 63567.34"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606936.486457, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606938.619834, "tool": "web_search", "args": {"query": "current population of India"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606938.8183675, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606938.8762836, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606939.4718454, "tool": "web_search", "args": {"query": "current population of United States"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606940.4762254, "tool": "calculator", "args": {"expression": "0.15 * 84000"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606940.8265297, "tool": "web_search", "args": {"query": "current price of gold per ounce"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606941.2361035, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606941.6401448, "tool": "web_search", "args": {"query": "current price of silver per ounce"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606941.8479066, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606942.302241, "tool": "calculator", "args": {"expression": "1477537450 / 349236475"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606943.1765223, "tool": "calculator", "args": {"expression": "2340 * 18"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606943.9615567, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606945.3146718, "tool": "calculator", "args": {"expression": "50000 * (1 + 0.08) ** 3"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606946.2127702, "tool": "web_search", "args": {"query": "current USD to INR exchange rate"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606947.029425, "tool": "web_search", "args": {"query": "current price of gold per ounce"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606948.0286298, "tool": "web_search", "args": {"query": "current gold price per ounce"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606948.8439002, "tool": "web_search", "args": {"query": "current silver price per ounce"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606949.8897736, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606951.0206892, "tool": "web_search", "args": {"query": "current president of France 2023"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606951.4405825, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606952.4797335, "tool": "web_search", "args": {"query": "latest version of Python"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606953.0407975, "tool": "web_search", "args": {"query": "current population of Japan 2023"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606956.3099973, "tool": "web_search", "args": {"query": "current price of Bitcoin in USD"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606956.7523587, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606957.6820898, "tool": "web_search", "args": {"query": "current USD to INR exchange rate"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606957.964764, "tool": "web_search", "args": {"query": "current price of gold per ounce"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606959.092549, "tool": "web_search", "args": {"query": "current Bitcoin price"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606959.621838, "tool": "calculator", "args": {"expression": "45000 * 95.2207"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606960.4485266, "tool": "calculator", "args": {"expression": "4,398.04 * 12"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606960.9584885, "tool": "calculator", "args": {"expression": "3.5 * 63567.34"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606961.4490557, "tool": "calculator", "args": {"expression": "4398.04 * 12"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606963.1231875, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606964.4710567, "tool": "web_search", "args": {"query": "current population of India"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606964.520803, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606964.8022704, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606964.9327388, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606965.397327, "tool": "web_search", "args": {"query": "current population of United States"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606965.845287, "tool": "web_search", "args": {"query": "current gold price per ounce"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606965.9466484, "tool": "calculator", "args": {"expression": "0.15 * 84000"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606966.2643785, "tool": "calculator", "args": {"expression": "2340 * 18"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606966.6689925, "tool": "web_search", "args": {"query": "current silver price per ounce"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606967.5957272, "tool": "calculator", "args": {"expression": "1477527450 / 349236475"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606968.31583, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606969.091111, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606969.6914427, "tool": "calculator", "args": {"expression": "4398.04 * 5"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606969.693413, "tool": "calculator", "args": {"expression": "65.65 * 5"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606969.9452674, "tool": "web_search", "args": {"query": "current USD to INR exchange rate"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606970.7492168, "tool": "calculator", "args": {"expression": "50000 * (1 + 0.08) ** 3"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606972.739649, "tool": "web_search", "args": {"query": "current price of gold per ounce"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606974.45078, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606974.942061, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606975.477806, "tool": "web_search", "args": {"query": "current president of France 2023"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606976.0514696, "tool": "web_search", "args": {"query": "current population of Japan 2023"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606976.3432388, "tool": "web_search", "args": {"query": "latest version of Python"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606979.2192807, "tool": "web_search", "args": {"query": "current Bitcoin price in USD"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606981.2083733, "tool": "web_search", "args": {"query": "current USD to INR exchange rate"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606982.3326857, "tool": "web_search", "args": {"query": "current price of gold per ounce"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606983.2465012, "tool": "web_search", "args": {"query": "current Bitcoin price"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606984.1454513, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606984.214899, "tool": "calculator", "args": {"expression": "12 * 4398.04"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606984.9678788, "tool": "calculator", "args": {"expression": "45000 * 95.2207"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606985.2889986, "tool": "calculator", "args": {"expression": "3.5 * 63567.34"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606985.7267323, "tool": "web_search", "args": {"query": "current population of India"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606986.5042396, "tool": "web_search", "args": {"query": "current population of United States"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606988.55895, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606989.3149376, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606989.7077463, "tool": "calculator", "args": {"expression": "1477527450 / 349236475"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606990.3082268, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606990.4316943, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606991.0121944, "tool": "web_search", "args": {"query": "current gold price per ounce"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606991.310655, "tool": "calculator", "args": {"expression": "0.15 * 84000"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606991.4250393, "tool": "calculator", "args": {"expression": "2340 * 18"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606991.9157832, "tool": "web_search", "args": {"query": "current silver price per ounce"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606994.1773546, "tool": "web_search", "args": {"query": "current price of gold per ounce"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606994.7052076, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606995.0575488, "tool": "web_search", "args": {"query": "current price of silver per ounce"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606995.7425919, "tool": "web_search", "args": {"query": "current USD to INR exchange rate"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606995.975078, "tool": "web_search", "args": {"query": "current gold price per ounce"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606996.8681123, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606997.3941178, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606998.2908893, "tool": "calculator", "args": {"expression": "50000 * (1 + 0.08)^3"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606999.4298306, "tool": "calculator", "args": {"expression": "4398.04 * 5"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786606999.4330695, "tool": "calculator", "args": {"expression": "65.65 * 5"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786607000.3931627, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786607000.5343122, "tool": "web_search", "args": {"query": "current president of France 2023"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786607000.6104496, "tool": "calculator", "args": {"expression": "50000 * (1 + 0.08) ** 3"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786607001.8688383, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786607003.108178, "tool": "web_search", "args": {"query": "latest version of Python"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786607005.1844044, "tool": "web_search", "args": {"query": "current population of Japan 2023"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786607005.7566698, "tool": "web_search", "args": {"query": "current Bitcoin price in USD"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786607005.9612389, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786607007.3668609, "tool": "web_search", "args": {"query": "current USD to INR exchange rate"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786607009.3063612, "tool": "calculator", "args": {"expression": "45000 * 95.2207"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786607009.635325, "tool": "web_search", "args": {"query": "current price of gold per ounce"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786607010.2070744, "tool": "web_search", "args": {"query": "current Bitcoin price"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786607011.6508093, "tool": "calculator", "args": {"expression": "4398.04 * 12"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786607012.2657082, "tool": "calculator", "args": {"expression": "3.5 * 63567.34"}, "decision": "allow", "tier": "safe"}

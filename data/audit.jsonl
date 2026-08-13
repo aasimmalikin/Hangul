@@ -733,3 +733,119 @@
 {"ts": 1786607010.2070744, "tool": "web_search", "args": {"query": "current Bitcoin price"}, "decision": "allow", "tier": "safe"}
 {"ts": 1786607011.6508093, "tool": "calculator", "args": {"expression": "4398.04 * 12"}, "decision": "allow", "tier": "safe"}
 {"ts": 1786607012.2657082, "tool": "calculator", "args": {"expression": "3.5 * 63567.34"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640776.9917278, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640778.606537, "tool": "search_docs", "args": {"query": "examination rooms Brightpath Medical Clinic"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640784.6237245, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640785.5975015, "tool": "search_docs", "args": {"query": "standard appointment slots at Brightpath"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640790.3649898, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640791.4268005, "tool": "search_docs", "args": {"query": "physicians and nurses employed by Brightpath"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640797.6589446, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640798.7634404, "tool": "search_docs", "args": {"query": "patient records retention Brightpath"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640806.5255876, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640807.591485, "tool": "search_docs", "args": {"query": "Nimbus Analytics total revenue FY2025"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640812.0985801, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640813.0603569, "tool": "web_search", "args": {"query": "Nimbus Analytics headquarters location"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640818.6560822, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640818.6595113, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640819.9922686, "tool": "search_docs", "args": {"query": "full-time employees Nimbus"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640820.5383172, "tool": "search_docs", "args": {"query": "offices Nimbus"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640828.139344, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640829.6345448, "tool": "search_docs", "args": {"query": "Meridian Logistics Riverside inventory standard pallets"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640830.1891243, "tool": "search_docs", "args": {"query": "Meridian Logistics Riverside inventory value of pallets"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640838.6073222, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640839.6065545, "tool": "search_docs", "args": {"query": "forklift battery packs Meridian"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640844.1896653, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640845.539679, "tool": "web_search", "args": {"query": "number of delivery trucks Harbor Freight Logistics operates"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640849.2981832, "tool": "web_search", "args": {"query": "Harbor Freight Logistics fleet size"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640854.9350967, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640854.9394245, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640856.370853, "tool": "web_search", "args": {"query": "Harbor Freight central warehouse size and number of loading docks"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640858.7243965, "tool": "search_docs", "args": {"query": "Harbor Freight central warehouse size and loading docks"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640865.4307642, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640867.4361928, "tool": "search_docs", "args": {"query": "Verdant Home Goods catalog"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640873.5359025, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640874.529636, "tool": "search_docs", "args": {"query": "best-selling category"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640878.3596117, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640878.3623688, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640879.7585356, "tool": "search_docs", "args": {"query": "Project Aurora prototype energy density"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640880.3291202, "tool": "web_search", "args": {"query": "Project Aurora prototype energy density 2027 target"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640889.4429283, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640889.4454775, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640891.308573, "tool": "search_docs", "args": {"query": "Project Aurora lead researcher and budget"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640891.8629737, "tool": "web_search", "args": {"query": "Project Aurora lead researcher and budget"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640900.192124, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640900.1949856, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640901.657439, "tool": "search_docs", "args": {"query": "Riverstone Mountain Resort elevation and number of guest rooms"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640902.387434, "tool": "web_search", "args": {"query": "Riverstone Mountain Resort elevation and number of guest rooms"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640909.4743006, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640910.6399844, "tool": "search_docs", "args": {"query": "lodge names at Riverstone"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640916.2667522, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640917.3034546, "tool": "search_docs", "args": {"query": "check-in and check-out times at Riverstone"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640926.0457895, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640927.2097025, "tool": "search_docs", "args": {"query": "pets allowed at Riverstone"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640934.2723942, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640935.878898, "tool": "search_docs", "args": {"query": "Meridian's Riverside warehouse storage aisles"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640936.4288073, "tool": "search_docs", "args": {"query": "pallet racks per aisle Riverside warehouse"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640940.4025145, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640941.5012288, "tool": "search_docs", "args": {"query": "total pallet storage capacity of Meridian's Riverside warehouse"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640942.9116929, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640944.9910307, "tool": "calculator", "args": {"expression": "12 * 45 * 8"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640950.6257179, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640951.937803, "tool": "calculator", "args": {"expression": "1850 * 34"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640955.2596755, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640956.3741071, "tool": "search_docs", "args": {"query": "total rooms Brightpath operates"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640962.9106755, "tool": "search_docs", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640963.9753423, "tool": "search_docs", "args": {"query": "Nimbus gross profit FY2025"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640965.623681, "tool": "calculator", "args": {"expression": "48000000 - 18000000"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640969.6321778, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640970.5639553, "tool": "calculator", "args": {"expression": "54 * 12"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640974.5765297, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640975.5823076, "tool": "calculator", "args": {"expression": "0.15 * 84000"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640978.549149, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640979.5904117, "tool": "calculator", "args": {"expression": "2340 * 18"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640982.7577164, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640983.7855277, "tool": "calculator", "args": {"expression": "96500 / 23"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640989.3261886, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640990.3073785, "tool": "calculator", "args": {"expression": "1850 * 34"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640994.8147326, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640995.7317357, "tool": "calculator", "args": {"expression": "4820 + 1975 + 6340"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640999.1806855, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786640998.5592778, "tool": "calculator", "args": {"expression": "12 * 45 * 8"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641001.309148, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641002.319052, "tool": "calculator", "args": {"expression": "7 * 6 * 5 * 4 * 3 * 2 * 1"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641005.500159, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641006.4433765, "tool": "calculator", "args": {"expression": "sqrt(2025)"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641007.4303143, "tool": "calculator", "args": {"expression": "2025 ** 0.5"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641010.8157806, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641011.8907254, "tool": "calculator", "args": {"expression": "340 * 54"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641015.1914837, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641016.2580795, "tool": "calculator", "args": {"expression": "(890 - 34) * 2"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641019.9748797, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641020.875213, "tool": "calculator", "args": {"expression": "5000 * 0.22"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641023.8344343, "tool": "calculator", "args": {"expression": "340 - 27"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641026.898358, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641028.0535522, "tool": "web_search", "args": {"query": "current USD to INR exchange rate"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641030.8123057, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641031.7850308, "tool": "web_search", "args": {"query": "current price of gold per ounce"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641037.4457452, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641038.4999194, "tool": "web_search", "args": {"query": "current president of France 2023"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641043.1896818, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641044.283533, "tool": "web_search", "args": {"query": "latest stable version of Python"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641050.2369928, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641051.30271, "tool": "web_search", "args": {"query": "current Bitcoin price in USD"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641055.5846348, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641056.7559388, "tool": "web_search", "args": {"query": "current population of Japan 2023"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641063.6377935, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641064.6356287, "tool": "web_search", "args": {"query": "current CEO of Microsoft 2023"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641069.7649097, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641070.8350272, "tool": "web_search", "args": {"query": "current price of silver per ounce"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641079.1351736, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641080.2443895, "tool": "web_search", "args": {"query": "current USD to EUR exchange rate"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641084.3355463, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641085.4555116, "tool": "web_search", "args": {"query": "current Ethereum price in USD"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641090.3851342, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641091.6158628, "tool": "web_search", "args": {"query": "latest iPhone model release"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641096.0309076, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641097.0342994, "tool": "web_search", "args": {"query": "current price of crude oil per barrel"}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641101.478653, "tool": "web_search", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1786641102.5203357, "tool": "web_search", "args": {"query": "current prime minister of the United Kingdom"}, "decision": "allow", "tier": "safe"}

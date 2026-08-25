@@ -1,6 +1,6 @@
 """Per-request session identity. A session is an opaque ID that scopes a
 visitor's uploaded documents. No accounts, no auth — ephemeral by design.
-Production would swap this for real auth;"""
+Production would swap this for real auth."""
 
 import uuid
 from fastapi import Header

@@ -11,6 +11,7 @@ class Settings(BaseSettings):
     openai_api_key: str | None = None
     model: str = "gpt-4o-mini"
     tavily_api_key: str | None = None
+    database_url: str = "postgresql+psycopg://agentic:agentic@localhost:5432/agentic_qa"
 
 @lru_cache()
 def get_settings() -> Settings:

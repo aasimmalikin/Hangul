@@ -733,3 +733,7 @@
 {"ts": 1786607010.2070744, "tool": "web_search", "args": {"query": "current Bitcoin price"}, "decision": "allow", "tier": "safe"}
 {"ts": 1786607011.6508093, "tool": "calculator", "args": {"expression": "4398.04 * 12"}, "decision": "allow", "tier": "safe"}
 {"ts": 1786607012.2657082, "tool": "calculator", "args": {"expression": "3.5 * 63567.34"}, "decision": "allow", "tier": "safe"}
+{"ts": 1787760247.117191, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1787760248.068685, "tool": "calculator", "args": {"expression": "47 * 19"}, "decision": "allow", "tier": "safe"}
+{"ts": 1787769956.1890328, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1787769957.8508577, "tool": "calculator", "args": {"expression": "47 * 19"}, "decision": "allow", "tier": "safe"}

@@ -11,6 +11,7 @@ class Thread(Base):
     thread_id: Mapped[str] = mapped_column(String(64), primary_key = True)
     message: Mapped[list] = mapped_column(JSONB, nullable = False, default = list)
     step: Mapped[int] = mapped_column(Integer, nullable = False, default = 0)
+    status: Mapped[str] = mapped_column(String(32), nullable = False, default = "running")
     completed_calls: Mapped[dict] = mapped_column(JSONB, nullable = False, default = dict)
     pending_tool: Mapped[dict | None] = mapped_column(JSONB, nullable = True)
 

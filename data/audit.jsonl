@@ -737,3 +737,5 @@
 {"ts": 1787760248.068685, "tool": "calculator", "args": {"expression": "47 * 19"}, "decision": "allow", "tier": "safe"}
 {"ts": 1787769956.1890328, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
 {"ts": 1787769957.8508577, "tool": "calculator", "args": {"expression": "47 * 19"}, "decision": "allow", "tier": "safe"}
+{"ts": 1787817869.9588308, "tool": "calculator", "args": {}, "decision": "allow", "tier": "safe"}
+{"ts": 1787817871.1823745, "tool": "calculator", "args": {"expression": "88 * 37"}, "decision": "allow", "tier": "safe"}

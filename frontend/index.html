@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hangul · The Kashmir Stag</title>
+  <meta name="description" content="The Hangul, or Kashmir stag — the last red deer of the Himalaya, surviving in Dachigam National Park." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== EDIT YOUR COLORS HERE ===== */
+    :root {
+      --paper: #f4f3ed;   /* light background      */
+      --pine:  #1e2b22;   /* deep forest (dark bg) */
+      --ink:   #23271f;   /* body text             */
+      --stag:  #925e2e;   /* accent — the deer's russet coat */
+      --moss:  #6b7855;   /* secondary green       */
+      --line:  #ddd9cc;   /* hairlines             */
+      --maxw:  720px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 26px; }
+
+    h1, h2, .mark { font-family: 'Fraunces', Georgia, serif; }
+
+    /* ===== HERO (dark, like Dachigam's forest) ===== */
+    header {
+      background: var(--pine);
+      color: var(--paper);
+      padding: 96px 0 84px;
+    }
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #c9b79a;
+      margin-bottom: 26px;
+    }
+    .mark {
+      font-size: clamp(56px, 13vw, 116px);
+      font-weight: 600;
+      line-height: 0.98;
+      letter-spacing: -0.02em;
+    }
+    .sub {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: clamp(19px, 3.6vw, 27px);
+      font-weight: 400;
+      color: #d8d2c4;
+      margin-top: 22px;
+      max-width: 30ch;
+    }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 34px;
+      font-size: 14px;
+      color: #e7e1d4;
+    }
+    .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--stag); }
+
+    /* antler line motif */
+    .antler { margin-top: 46px; opacity: 0.55; }
+    .antler svg { width: 128px; height: auto; stroke: #c9b79a; }
+
+    /* ===== FACT STRIP ===== */
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid var(--line);
+    }
+    .fact { padding: 34px 26px; border-right: 1px solid var(--line); }
+    .fact:last-child { border-right: none; }
+    .fact .n { font-family: 'Fraunces', serif; font-size: 30px; color: var(--stag); font-weight: 600; }
+    .fact .l { font-size: 13px; color: var(--moss); margin-top: 6px; letter-spacing: 0.03em; }
+
+    /* ===== SECTIONS ===== */
+    section { padding: 74px 0; border-bottom: 1px solid var(--line); }
+    .kicker {
+      font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--stag); font-weight: 500; margin-bottom: 16px;
+    }
+    h2 { font-size: clamp(26px, 5vw, 38px); font-weight: 500; letter-spacing: -0.01em; margin-bottom: 20px; }
+    p.lead { font-size: 19px; }
+    p + p { margin-top: 16px; }
+    .muted { color: #55584d; }
+
+    /* ===== POPULATION CHART ===== */
+    .chart { margin-top: 30px; }
+    .chart svg { width: 100%; height: auto; display: block; }
+    .chart figcaption { font-size: 13px; color: #55584d; margin-top: 14px; }
+
+    /* ===== FOOTER ===== */
+    footer { padding: 40px 0 64px; font-size: 13px; color: #55584d; }
+    footer a { color: var(--ink); }
+
+    @media (max-width: 560px) {
+      .facts { grid-template-columns: 1fr; }
+      .fact { border-right: none; border-bottom: 1px solid var(--line); }
+      .fact:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HERO ===== -->
+  <header>
+    <div class="wrap">
+      <p class="eyebrow">State animal of Jammu &amp; Kashmir</p>
+      <div class="mark">Hangul</div>
+      <p class="sub">The Kashmir stag — the last red deer of the Himalaya.</p>
+      <div class="status"><span class="dot"></span> Critically Endangered · around 289 left in the wild</div>
+
+      <div class="antler" aria-hidden="true">
+        <svg viewBox="0 0 200 90" fill="none" stroke-width="2.4" stroke-linecap="round">
+          <path d="M100 88 L100 50" />
+          <path d="M100 56 C88 46 84 34 84 22 M84 34 C76 30 70 22 68 12 M84 26 C78 22 72 20 66 20" />
+          <path d="M100 56 C112 46 116 34 116 22 M116 34 C124 30 130 22 132 12 M116 26 C122 22 128 20 134 20" />
+          <path d="M100 50 C94 44 90 40 86 38 M100 50 C106 44 110 40 114 38" />
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== FACT STRIP ===== -->
+  <div class="facts">
+    <div class="fact"><div class="n">~289</div><div class="l">left in the wild (2023)</div></div>
+    <div class="fact"><div class="n">141 km&sup2;</div><div class="l">Dachigam National Park</div></div>
+    <div class="fact"><div class="n">1</div><div class="l">red deer race left in India</div></div>
+  </div>
+
+  <!-- ===== ABOUT ===== -->
+  <section>
+    <div class="wrap">
+      <p class="kicker">The animal</p>
+      <h2>A deer found nowhere else</h2>
+      <p class="lead">The Hangul is the only surviving subspecies of red deer in the Indian subcontinent. Males carry broad, branching antlers and move through the oak and pine forests of the Kashmir Himalaya in small groups.</p>
+      <p class="muted">Its last stronghold is Dachigam National Park, just outside Srinagar, with a smaller second population in Tral Wildlife Sanctuary. Beyond these protected valleys, the animal has almost vanished.</p>
+    </div>
+  </section>
+
+  <!-- ===== POPULATION STORY (signature) ===== -->
+  <section>
+    <div class="wrap">
+      <p class="kicker">A century of decline</p>
+      <h2>From thousands to a few hundred</h2>
+      <p class="muted">Around 5,000 Hangul roamed Kashmir in the early 1900s. Habitat loss, human pressure and poaching collapsed the population to under 200. Careful protection has since nudged the numbers up — but they remain perilously low.</p>
+
+      <figure class="chart">
+        <svg viewBox="0 0 640 250" role="img" aria-label="Hangul population from about 5000 in the early 1900s to 289 in 2023">
+          <line x1="60" y1="210" x2="600" y2="210" stroke="#ddd9cc" stroke-width="1"/>
+          <polyline points="60,30 348,204 563,205 591,201 600,200"
+                    fill="none" stroke="#925e2e" stroke-width="2.5"
+                    stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="60"  cy="30"  r="4" fill="#925e2e"/>
+          <circle cx="348" cy="204" r="4" fill="#925e2e"/>
+          <circle cx="600" cy="200" r="4" fill="#925e2e"/>
+          <text x="60"  y="20"  font-family="Inter" font-size="13" fill="#23271f">~5,000</text>
+          <text x="60"  y="234" font-family="Inter" font-size="12" fill="#55584d">early 1900s</text>
+          <text x="330" y="226" font-family="Inter" font-size="12" fill="#55584d">1968 · ~180</text>
+          <text x="560" y="234" font-family="Inter" font-size="12" fill="#55584d" text-anchor="end">2023 · 289</text>
+        </svg>
+        <figcaption>Estimated wild population. Sources: J&amp;K Dept. of Wildlife Protection, Wildlife Institute of India, IUCN.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== WHY IT MATTERS ===== -->
+  <section>
+    <div class="wrap">
+      <p class="kicker">Why it matters</p>
+      <h2>One park, one chance</h2>
+      <p class="muted">The Hangul is a test of whether a single protected valley can hold a critically endangered species across decades. Low fawn survival, shrinking range, and predation pressure keep the recovery fragile. It survives under the Wildlife Protection Act of 1972 and the long-running Project Hangul.</p>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="wrap">
+      hangul.site — an independent page about the Kashmir stag. Figures as of the 2023 census; replace this copy with your own.
+    </div>
+  </footer>
+
+</body>
+</html>

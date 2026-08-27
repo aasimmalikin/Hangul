@@ -15,7 +15,7 @@ from harness.tools.builtin.web_search import WEB_SEARCH_TOOL
 from harness.tools.builtin.search_docs_session import make_search_docs_tool
 from harness.tools.builtin.filesystem_session import wrap_filesystem_tool
 from harness.cache.keys import answer_key
-from harness.cache.memory_cache import MemoryCache
+from harness.cache.redis_cache import RedisCache
 from harness.policy.policy import ToolPolicy
 from harness.policy.tiers import Tier
 from harness.policy.audit import AuditLog
@@ -54,7 +54,7 @@ _registry.registry(CALCULATOR_TOOL)
 _registry.registry(SEARCH_DOCS_TOOL)
 _registry.registry(WEB_SEARCH_TOOL)
 
-_cache = MemoryCache()
+_cache = RedisCache()
 
 DOCS_ONLY_INSTRUCTION = ("\\n\\nYou are in DOCUMENTS-ONLY mode. You have exactly one tool: search_docs. "
     "For EVERY question you MUST immediately call the search_docs tool with a query "

@@ -22,7 +22,8 @@ from harness.policy.audit import AuditLog
 from harness.checkpoint.store import CheckpointStore
 from harness.obs.tracing import Trace, cost_usd
 from harness.obs.trace_store import TraceStore
-from harness.api.session import get_session_id
+
+from harness.api.auth import get_current_user
 
 _audit = AuditLog()
 _store = CheckpointStore()
@@ -89,7 +90,7 @@ class AskResponse(BaseModel):
 
 
 @router.post("/ask", response_model=AskResponse)
-async def ask(req: AskRequest, session_id: str = Depends(get_session_id)) -> AskResponse:
+async def ask(req: AskRequest, user: dict = Depends(get_current_user)) -> AskResponse:
     prompt_version = get_prompt("system_agent")
     model = get_provider().model
     run = RunRecord(model=model, prompt_version=prompt_version.version)
@@ -103,7 +104,7 @@ async def ask(req: AskRequest, session_id: str = Depends(get_session_id)) -> Ask
     session_registry = ToolRegistry()
 
     # search_docs is ALWAYS available — it is the one tool docs-only mode needs
-    session_registry.registry(make_search_docs_tool(session_id))
+    session_registry.registry(make_search_docs_tool(user["user_id"]))
 
     # the other tools are only added when NOT in docs-only mode
     if not req.docs_only:
@@ -111,9 +112,9 @@ async def ask(req: AskRequest, session_id: str = Depends(get_session_id)) -> Ask
         session_registry.registry(WEB_SEARCH_TOOL)
         for t in _registry.list():
             if t.name.startswith("filesystem__"):
-                session_registry.registry(wrap_filesystem_tool(t, session_id))
+                session_registry.registry(wrap_filesystem_tool(t, user["user_id"]))
     
-    session_dir = (Path("data/sessions") / session_id).resolve()
+    session_dir = (Path("data/sessions") / user["user_id"]).resolve()
     session_dir.mkdir(parents=True, exist_ok=True)
     
 
@@ -138,7 +139,7 @@ async def ask(req: AskRequest, session_id: str = Depends(get_session_id)) -> Ask
         prompt_version=prompt_version.version,
         model=model,
         tool_names=[t.name for t in session_registry.list()],
-        session_id = session_id,
+        session_id = user["user_id"],
     )
 
     cached_raw = await _cache.get(key)

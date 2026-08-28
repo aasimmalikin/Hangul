@@ -18,5 +18,13 @@ class Thread(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone = True), server_default = func.now(), nullable = False)
 
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone = True), server_default = func.now(), onupdate = func.now(), nullable = False)
+
+class User(Base):
+    __tablename__ = "users"
+    id: Mapped[str] = mapped_column(String(64), primary_key = True)
+    google_sub: Mapped[str] = mapped_column(String(255), unique = True, nullable = False)
+    email: Mapped[str] = mapped_column(String(255), nullable = False)
+    role: Mapped[str] = mapped_column(String(32), nullable = False, default = "user")
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone = True), server_default = func.now(), nullable = False)
     
 

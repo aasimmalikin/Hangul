@@ -12,6 +12,8 @@ class Settings(BaseSettings):
     tavily_api_key: str | None = None
     database_url: str = "postgresql+psycopg://agentic:agentic@localhost:5432/agentic_qa"
     redis_url: str = "redis://localhost:6379/0"
+    jwt_secret: str = "dev-secret-change-in-production"
+    jwt_algorithm: str = "HS256"
 
 def get_settings() -> Settings:
     """ Retrieve the application settings, cached for performance. """

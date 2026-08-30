@@ -23,7 +23,7 @@ async def get_current_user(creds: HTTPAuthorizationCredentials = Depends(_bearer
     
     jti = payload.get("jti")
     if jti and await is_revoked(jti):
-        raise HTTPEception(status.HTTP_401_UNAUTHORIZED, "token revoked")
+        raise HTTPException(status.HTTP_401_UNAUTHORIZED, "token revoked")
     
     user_id = payload.get("sub")
 
@@ -33,6 +33,6 @@ async def get_current_user(creds: HTTPAuthorizationCredentials = Depends(_bearer
 
 def require_admin(user: dict = Depends(get_current_user))->dict:
     if user.get("role")!= "admin":
-        raise HTTPExeption(status.HTTP_403_UNAUTHORIZED, "admin access required")
+        raise HTTPException(status.HTTP_403_FORBIDDEN, "admin access required")
     return user
 

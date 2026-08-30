@@ -98,4 +98,5 @@ node_modules/
 *.zip
 *.bak
 *.tmp
-scratch/
+scratch/data/audit.jsonl
+data/sessions/

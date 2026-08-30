@@ -1,5 +1,7 @@
 from datetime import datetime
 from sqlalchemy import DateTime, Integer, String, func
+from sqlalchemy import Numeric
+from decimal import Decimal
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -18,5 +20,23 @@ class Thread(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone = True), server_default = func.now(), nullable = False)
 
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone = True), server_default = func.now(), onupdate = func.now(), nullable = False)
+
+class User(Base):
+    __tablename__ = "users"
+    id: Mapped[str] = mapped_column(String(64), primary_key = True)
+    google_sub: Mapped[str] = mapped_column(String(255), unique = True, nullable = False)
+    email: Mapped[str] = mapped_column(String(255), nullable = False)
+    role: Mapped[str] = mapped_column(String(32), nullable = False, default = "user")
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone = True), server_default = func.now(), nullable = False)
+
+class Transaction(Base):
+    __tablename__ = "transactions"
+    id: Mapped[int] = mapped_column(primary_key = True, autoincrement = True)
+    user_id: Mapped[str] = mapped_column(String(64), nullable = False, index = True)
+    amount: Mapped[Decimal] = mapped_column(Numeric(12,4), nullable = False)
+    kind: Mapped[str] = mapped_column(String(32), nullable = False)
+    thread_id: Mapped[str | None] = mapped_column(String(32), nullable = True)
+    balance_after: Mapped[Decimal] = mapped_column(Numeric(12,4), nullable = False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default = func.now(), nullable = False)
     
 

@@ -8,6 +8,7 @@ from harness.logging import log
 from harness.providers import get_provider
 from harness.prompts.registry import get_prompt
 from harness.api.session import get_session_id
+from harness.api.auth import get_current_user
 from harness.obs.tracing import Trace, cost_usd
 from harness.policy.guarded import guarded_dispatch
 
@@ -28,14 +29,14 @@ class ApproveRequest(BaseModel):
     decision: str
 
 #764c6b934c9c4176b91fcbe5195da93b
-def _build_session_registry(session_id: str) -> ToolRegistry:
+def _build_session_registry(user_id: str) -> ToolRegistry:
     reg = ToolRegistry()
-    reg.registry(make_search_docs_tool(session_id))
+    reg.registry(make_search_docs_tool(user_id))
     reg.registry(CALCULATOR_TOOL)
     reg.registry(WEB_SEARCH_TOOL)
     for t in _registry.list():
         if t.name.startswith("filesystem__"):
-            reg.registry(wrap_filesystem_tool(t, session_id))
+            reg.registry(wrap_filesystem_tool(t, user_id))
     return reg
 
 
@@ -50,7 +51,7 @@ def _replace_placeholder(messages: list[dict], tool_call_id: str, content: str) 
 
 
 @router.post("/approve", response_model=AskResponse)
-async def approve(req: ApproveRequest, session_id: str = Depends(get_session_id)) -> AskResponse:
+async def approve(req: ApproveRequest, user: dict = Depends(get_current_user)) -> AskResponse:
     cp = _store.load(req.approval_id)
     if cp is None or cp.pending_tool is None:
         raise HTTPException(status_code=404, detail="No pending action for that approval id.")
@@ -58,7 +59,7 @@ async def approve(req: ApproveRequest, session_id: str = Depends(get_session_id)
     pending = cp.pending_tool
     model = get_provider().model
     prompt_version = get_prompt("system_agent")
-    session_registry = _build_session_registry(session_id)
+    session_registry = _build_session_registry(user["user_id"])
 
     if req.decision == "reject":
         content = (f"The user REJECTED the action '{pending['name']}'. "
@@ -70,7 +71,7 @@ async def approve(req: ApproveRequest, session_id: str = Depends(get_session_id)
             # FORCE the path inside this session's folder, whatever the agent proposed
             if "path" in args and pending["name"].startswith("filesystem__"):
                 from pathlib import Path
-                session_dir = (Path("data/sessions") / session_id).resolve()
+                session_dir = (Path("data/sessions") / user["user_id"]).resolve()
                 session_dir.mkdir(parents=True, exist_ok=True)
                 filename = Path(args["path"]).name        # keep only the filename part
                 args["path"] = str(session_dir / filename)

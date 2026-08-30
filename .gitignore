@@ -26,20 +26,19 @@ htmlcov/
 !.env.example
 *.pem
 *.key
+*credentials*.json
 credentials
 .aws/
-aws/
 secrets/
+.cloudflared/
+cloudflared/
 
 # ---- Terraform ----------------------------------------------
-# NOTE: .terraform.lock.hcl is intentionally NOT ignored — commit it.
+# Commit .tf source and .terraform.lock.hcl. Ignore state and secrets.
 .terraform/
 *.tfstate
 *.tfstate.*
 *.tfvars
-*.hcl
-*.tf
-
 !*.tfvars.example
 crash.log
 crash.*.log
@@ -56,9 +55,7 @@ checkpoints/
 
 # ---- Data and indexes ---------------------------------------
 data/
-data/raw/
-data/interim/
-# but DO commit the eval set, baseline, index, and eval runs (portfolio + build needs them)
+# but DO commit the eval set, baseline, index, and eval runs
 !data/evalset.jsonl
 !data/eval_baseline.json
 !data/index.json
@@ -70,9 +67,7 @@ data/interim/
 *.sqlite
 *.sqlite3
 
-# ---- Eval + run artifacts -----------------------------------
-# cassettes/ is intentionally NOT ignored — they are test fixtures
-# and your evals are not reproducible without them.
+# ---- Run artifacts ------------------------------------------
 evals/reports/
 evals/runs/
 traces/
@@ -92,6 +87,15 @@ Thumbs.db
 .vscode/*
 !.vscode/settings.json
 !.vscode/extensions.json
+*.swp
+
+# ---- Frontend (Phase 3) -------------------------------------
+node_modules/
+.next/
+.vercel/
 
 # ---- Misc ---------------------------------------------------
 *.zip
+*.bak
+*.tmp
+scratch/

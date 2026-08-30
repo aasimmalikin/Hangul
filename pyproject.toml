@@ -25,6 +25,7 @@ dependencies = [
     "pydantic>=2.9",
     "pydantic-settings>=2.5",
     "redis>=5.0",
+    "pyjwt>=2.9",
 ]
 
 [build-system]

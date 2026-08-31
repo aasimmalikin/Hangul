@@ -27,6 +27,8 @@ from harness.api.auth import get_current_user
 from harness.db.ledger import record_transaction
 from decimal import Decimal
 
+from dataclasses import dataclass
+
 _audit = AuditLog()
 _store = CheckpointStore()
 _trace_store = TraceStore()
@@ -90,9 +92,16 @@ class AskResponse(BaseModel):
     resumed_from_step: int = 0
     pending_tool: dict | None = None
 
+@dataclass
+class RunOutcome:
+    result: object
+    run: RunRecord
+    prompt_version: object
+    model: str
+    run_cost: float
+    cache_key: str
 
-@router.post("/ask", response_model=AskResponse)
-async def ask(req: AskRequest, user: dict = Depends(get_current_user)) -> AskResponse:
+async def _build_and_run(req: AskRequest, user_id: str)->RunOutcome:
     prompt_version = get_prompt("system_agent")
     model = get_provider().model
     run = RunRecord(model=model, prompt_version=prompt_version.version)
@@ -106,7 +115,7 @@ async def ask(req: AskRequest, user: dict = Depends(get_current_user)) -> AskRes
     session_registry = ToolRegistry()
 
     # search_docs is ALWAYS available — it is the one tool docs-only mode needs
-    session_registry.registry(make_search_docs_tool(user["user_id"]))
+    session_registry.registry(make_search_docs_tool(user_id))
 
     # the other tools are only added when NOT in docs-only mode
     if not req.docs_only:
@@ -114,9 +123,9 @@ async def ask(req: AskRequest, user: dict = Depends(get_current_user)) -> AskRes
         session_registry.registry(WEB_SEARCH_TOOL)
         for t in _registry.list():
             if t.name.startswith("filesystem__"):
-                session_registry.registry(wrap_filesystem_tool(t, user["user_id"]))
+                session_registry.registry(wrap_filesystem_tool(t, user_id))
     
-    session_dir = (Path("data/sessions") / user["user_id"]).resolve()
+    session_dir = (Path("data/sessions") / user_id).resolve()
     session_dir.mkdir(parents=True, exist_ok=True)
     
 
@@ -141,28 +150,8 @@ async def ask(req: AskRequest, user: dict = Depends(get_current_user)) -> AskRes
         prompt_version=prompt_version.version,
         model=model,
         tool_names=[t.name for t in session_registry.list()],
-        session_id = user["user_id"],
+        session_id = user_id,
     )
-
-    cached_raw = await _cache.get(key)
-    if cached_raw is not None:
-        data = json.loads(cached_raw)
-        log.info("cache hit", key=key)
-        return AskResponse(
-            answer=data["answer"],
-            run_id=run.run_id,
-            prompt_version=prompt_version.version,
-            steps=data["steps"],
-            stopped_reason=data["stopped_reason"],
-            cached=True,
-            tools_used = data.get("tools_used", []),
-            safety_blocked = data.get("safety_blocked", []),
-            budget_used = data.get("budget_used", {}),
-            cost_usd = 0.0,
-            resumed_from_step = 0
-
-        )
-    log.info("cache miss", key=key)
 
     trace = Trace(trace_id=run.run_id)
 
@@ -188,7 +177,7 @@ async def ask(req: AskRequest, user: dict = Depends(get_current_user)) -> AskRes
     cost = Decimal(str(run_cost))
     if cost>0:
         record_transaction(
-        user_id = user["user_id"], 
+        user_id = user_id, 
         amount = -cost,
         kind = "run_cost",
         thread_id = run.run_id,
@@ -203,24 +192,58 @@ async def ask(req: AskRequest, user: dict = Depends(get_current_user)) -> AskRes
         "budget_used": result.budget_used,
     }))
 
+    return RunOutcome(
+        result = result,
+        run = run,
+        prompt_version = prompt_version, 
+        model = model,
+        run_cost = run_cost, 
+        cache_key = key
+    )
 
 
-    log.info("returning answer", steps=result.steps, stopped_reason=result.stopped_reason,
-             input_tokens=result.input_tokens, output_tokens=result.output_tokens)
 
+
+@router.post("/ask", response_model=AskResponse)
+async def ask(req: AskRequest, user: dict = Depends(get_current_user)) -> AskResponse:
+    user_id = user["user_id"]
+
+    # cache-hit shortcut stays here — it's specific to the JSON route
+    prompt_version = get_prompt("system_agent")
+    model = get_provider().model
+    session_registry = ToolRegistry()
+    session_registry.registry(make_search_docs_tool(user_id))
+    if not req.docs_only:
+        session_registry.registry(CALCULATOR_TOOL)
+        session_registry.registry(WEB_SEARCH_TOOL)
+        for t in _registry.list():
+            if t.name.startswith("filesystem__"):
+                session_registry.registry(wrap_filesystem_tool(t, user_id))
+    key = answer_key(
+        question=req.question, prompt_version=prompt_version.version, model=model,
+        tool_names=[t.name for t in session_registry.list()], session_id=user_id,
+    )
+    cached_raw = await _cache.get(key)
+    if cached_raw is not None:
+        data = json.loads(cached_raw)
+        log.info("cache hit", key=key)
+        return AskResponse(
+            answer=data["answer"], run_id="cached",
+            prompt_version=prompt_version.version,
+            steps=data["steps"], stopped_reason=data["stopped_reason"],
+            cached=True, tools_used=data.get("tools_used", []),
+            safety_blocked=data.get("safety_blocked", []),
+            budget_used=data.get("budget_used", {}), cost_usd=0.0, resumed_from_step=0,
+        )
+
+    outcome = await _build_and_run(req, user_id)
+    r = outcome.result
     return AskResponse(
-        answer=result.answer,
-        run_id=run.run_id,
-        prompt_version=prompt_version.version,
-        steps=result.steps,
-        stopped_reason=result.stopped_reason,
-        cached=False,
-        tools_used = result.tools_used,
-        safety_blocked = result.safety_blocked,
-        budget_used = result.budget_used,
-        cost_usd = run_cost, 
-        input_tokens = result.input_tokens,
-        output_tokens = result.output_tokens,
-        resumed_from_step = result.resumed_from_step,
-        pending_tool = result.pending_tool,
+        answer=r.answer, run_id=outcome.run.run_id,
+        prompt_version=outcome.prompt_version.version,
+        steps=r.steps, stopped_reason=r.stopped_reason, cached=False,
+        tools_used=r.tools_used, safety_blocked=r.safety_blocked,
+        budget_used=r.budget_used, cost_usd=outcome.run_cost,
+        input_tokens=r.input_tokens, output_tokens=r.output_tokens,
+        resumed_from_step=r.resumed_from_step, pending_tool=r.pending_tool,
     )

@@ -53,4 +53,5 @@ dev = [
     "ruff",          
     "pytest>=8.0",  
     "psycopg[binary]>=3.2",
+    "sse-starlette>=2.1",
 ]

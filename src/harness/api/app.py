@@ -4,7 +4,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from harness.logging import configure_logging, log
 from harness.config import get_settings
-from harness.api.routes import ask, health, observability, upload, quality, approve
+from harness.api.routes import ask, health, observability, upload, quality, approve, ask_stream
 from harness.mcp.manager import MCPManager
 from harness.api.routes.ask import _registry
 
@@ -48,6 +48,7 @@ def create_app() -> FastAPI:
     app.include_router(upload.router)
     app.include_router(quality.router)
     app.include_router(approve.router)
+    app.include_router(ask_stream.router)
     return app
 
 app = create_app()

@@ -25,7 +25,10 @@ async def ask_stream(req: AskRequest, request: Request, user: dict = Depends(get
             yield {"event": "token", "data": json.dumps({"text": r.answer})}
 
             if r.pending_tool:
-                yield {"event": "approval_required", "data": json.dumps(r.pending_tool)}
+                yield {"event": "approval_required", "data": json.dumps({
+                    **r.pending_tool,
+                    "run_id": outcome.run.run_id,
+                })}
             
             yield {"event": "done", "data": json.dumps({
                 "steps": r.steps,

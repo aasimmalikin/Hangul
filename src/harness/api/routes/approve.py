@@ -93,7 +93,7 @@ async def approve(req: ApproveRequest, user: dict = Depends(get_current_user)) -
 
     trace = Trace(trace_id=req.approval_id)
     result = await run_agent(
-        question="",
+        question="Briefly confirm what was just done, in one sentence.",
         prompt_text=prompt_version.text,
         registry=session_registry,
         provider=get_provider(),

@@ -4,6 +4,17 @@ import { mintServiceToken } from "@/lib/service-token"
 export const runtime = "nodejs"
 export const maxDuration = 300
 
+/**
+ * Translates the agent's SSE progress stream into an AI SDK UI message stream.
+ *
+ * The backend emits one event per thing the agent does — a turn's narration
+ * tokens, each tool call, each tool result — and they are forwarded in order so
+ * the user watches the run unfold instead of waiting on a final answer:
+ *
+ *   text_start/delta/end  ->  text parts (one block per agent turn)
+ *   tool_call             ->  data-tool part, status "running"
+ *   tool_result           ->  same data-tool part id, status "done" | "error"
+ */
 export async function POST(req: Request) {
   const session = await auth()
   if (!session?.user?.email) {
@@ -32,7 +43,11 @@ export async function POST(req: Request) {
       const reader = upstream.body!.getReader()
       const decoder = new TextDecoder()
       let buffer = ""
-      let pendingApproval = false
+
+      // Arguments arrive on tool_call and are needed again on tool_result, so
+      // the finished card can still say what was searched for.
+      const callArgs = new Map<string, unknown>()
+      const openBlocks = new Set<string>()
 
       const send = (obj: unknown) =>
         controller.enqueue(
@@ -41,7 +56,6 @@ export async function POST(req: Request) {
 
       try {
         send({ type: "start" })
-        send({ type: "text-start", id: "0" })
 
         while (true) {
           const { done, value } = await reader.read()
@@ -61,51 +75,83 @@ export async function POST(req: Request) {
             if (!dataStr) continue
             const data = JSON.parse(dataStr)
 
-            if (eventType === "approval_required") {
-              // Suppress the placeholder answer text so the card stands alone.
-              pendingApproval = true
-              if (data.name === "ask_user") {
-                // A clarification question, not an action approval. Options are
-                // {label, description} objects; tolerate plain strings too, so a
-                // checkpoint written before that schema change still renders.
-                const options = (data.arguments.options ?? []).map(
-                  (o: unknown) =>
-                    typeof o === "string"
-                      ? { label: o, description: "" }
-                      : {
-                          label: String((o as { label?: unknown }).label ?? ""),
-                          description: String(
-                            (o as { description?: unknown }).description ?? ""
-                          ),
-                        }
-                )
+            switch (eventType) {
+              case "text_start":
+                openBlocks.add(data.block)
+                send({ type: "text-start", id: data.block })
+                break
+
+              case "text_delta":
+                send({ type: "text-delta", id: data.block, delta: data.text })
+                break
+
+              case "text_end":
+                openBlocks.delete(data.block)
+                send({ type: "text-end", id: data.block })
+                break
+
+              case "tool_call":
+                callArgs.set(data.id, data.arguments)
                 send({
-                  type: "data-choice",
+                  type: "data-tool",
+                  id: data.id,
                   data: {
-                    runId: data.run_id,
-                    question: data.arguments.question,
-                    options,
-                  },
-                })
-              } else {
-                send({
-                  type: "data-approval",
-                  data: {
-                    runId: data.run_id,
                     tool: data.name,
                     arguments: data.arguments,
+                    status: "running",
+                    step: data.step,
                   },
                 })
-              }
-            } else if (eventType === "token") {
-              if (!pendingApproval) {
-                send({ type: "text-delta", id: "0", delta: data.text })
-              }
-            } else if (eventType === "done") {
-              send({ type: "text-end", id: "0" })
-              send({ type: "finish" })
-            } else if (eventType === "error") {
-              send({ type: "error", errorText: data.message })
+                break
+
+              case "tool_result":
+                // Same id as the tool_call above, so this replaces that part
+                // rather than appending a second one.
+                send({
+                  type: "data-tool",
+                  id: data.id,
+                  data: {
+                    tool: data.name,
+                    arguments: callArgs.get(data.id) ?? {},
+                    status: data.ok ? "done" : "error",
+                    preview: data.preview,
+                    ms: data.ms,
+                    cached: data.cached,
+                  },
+                })
+                break
+
+              case "approval_required":
+                if (data.name === "ask_user") {
+                  send({
+                    type: "data-choice",
+                    data: {
+                      runId: data.run_id,
+                      question: data.arguments.question,
+                      options: data.arguments.options ?? [],
+                    },
+                  })
+                } else {
+                  send({
+                    type: "data-approval",
+                    data: {
+                      runId: data.run_id,
+                      tool: data.name,
+                      arguments: data.arguments,
+                    },
+                  })
+                }
+                break
+
+              case "done":
+                for (const block of openBlocks) send({ type: "text-end", id: block })
+                openBlocks.clear()
+                send({ type: "finish" })
+                break
+
+              case "error":
+                send({ type: "error", errorText: data.message })
+                break
             }
           }
         }
@@ -116,8 +162,6 @@ export async function POST(req: Request) {
       }
     },
   })
-
-
 
   return new Response(stream, {
     headers: {

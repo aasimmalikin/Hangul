@@ -104,7 +104,7 @@ class RunOutcome:
     run_cost: float
     cache_key: str
 
-async def _build_and_run(req: AskRequest, user_id: str, on_token = None)->RunOutcome:
+async def _build_and_run(req: AskRequest, user_id: str, on_event=None) -> RunOutcome:
     prompt_version = get_prompt("system_agent")
     model = get_provider().model
     run = RunRecord(model=model, prompt_version=prompt_version.version)
@@ -170,7 +170,7 @@ async def _build_and_run(req: AskRequest, user_id: str, on_token = None)->RunOut
         thread_id=run.run_id,
         trace=trace,
         force_tool_use=req.docs_only,
-        on_token=on_token,
+        on_event=on_event,
     )
 
 

@@ -7,6 +7,6 @@ def to_openai_tool(tool: Tool)->dict:
         "function": {
             "name": tool.name,
             "description": tool.description,
-            "parameter": tool.parameter,
+            "parameters": tool.parameter,
         },
     }

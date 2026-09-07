@@ -12,7 +12,7 @@ async def dispatch(tool: Tool, args: dict, timeout: float = 30.0) -> ToolResult:
         required = tool.parameter.get("required", []) if isinstance(tool.parameter, dict) else []
         hint = ""
         if "path" in required:
-            hint = " For filesystem tools, use path '.' for the docs folder itself, or a bare filename like 'report.txt'."
+            hint = " For filesystem tools, pass the absolute session-folder path given in your instructions, e.g. '<session folder>/report.txt'."
         return ToolResult(
             ok=False,
             content=f"Invalid arguments for {tool.name}: {e.message}. Required fields: {required}.{hint}",

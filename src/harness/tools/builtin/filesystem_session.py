@@ -50,7 +50,16 @@ def wrap_filesystem_tool(tool: Tool, session_id: str) -> Tool:
 
     return Tool(
         name=tool.name,
-        description=tool.description,
+        # The MCP server describes its own allowed directories, which say nothing
+        # about this per-session scoping. Restate the real boundary so the tool
+        # description cannot contradict the system prompt.
+        description=(
+            f"{tool.description.rstrip().rstrip('.')}. Scoped to the user's session "
+            "workspace: the files they uploaded and files written for them. Paths are "
+            "the absolute session-folder path given in the instructions. This tool "
+            "cannot reach the user's document library -- use search_docs for questions "
+            "about document content."
+        ),
         parameter=tool.parameter,
         handler=handler,
     )

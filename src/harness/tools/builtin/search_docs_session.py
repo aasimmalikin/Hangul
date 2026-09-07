@@ -29,9 +29,11 @@ def make_search_docs_tool(session_id: str) -> Tool:
 
     return Tool(
         name="search_docs",
-        description="Search the user's uploaded documents (or the built-in docs) "
-                    "for passages relevant to a query. Use this for questions about "
-                    "the user's documents.",
+        description="Search the user's document library for passages relevant to a "
+                    "query. This is the only way to reach that library -- the "
+                    "filesystem tools cannot see it. Use it for any question about "
+                    "what the documents say, including when the user names a "
+                    "document by title. Cite the [source] shown with each passage.",
         parameter={
             "type": "object",
             "properties": {"query": {"type": "string"}, "k": {"type": "integer"}},

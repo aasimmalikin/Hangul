@@ -12,6 +12,6 @@ class ToolPolicy:
         tier = self.tier_of(tool_name)
         if tier in (Tier.SAFE, Tier.SENSITIVE):
             return Decision.ALLOW
-        if tier == Tier.DESTRUCTIVE:
+        if tier in (Tier.DESTRUCTIVE, Tier.ELICIT):
             return Decision.NEEDS_APPROVAL
         return Decision.DENY

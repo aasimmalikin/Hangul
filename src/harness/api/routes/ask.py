@@ -12,6 +12,7 @@ from harness.tools.registry import ToolRegistry
 from harness.tools.builtin.calculator import CALCULATOR_TOOL
 from harness.tools.builtin.search_docs import SEARCH_DOCS_TOOL
 from harness.tools.builtin.web_search import WEB_SEARCH_TOOL
+from harness.tools.builtin.ask_user import ASK_USER_TOOL
 from harness.tools.builtin.search_docs_session import make_search_docs_tool
 from harness.tools.builtin.filesystem_session import wrap_filesystem_tool
 from harness.cache.keys import answer_key
@@ -36,6 +37,7 @@ _policy = ToolPolicy(tiers={
     "calculator": Tier.SAFE,
     "search_docs": Tier.SAFE,
     "web_search": Tier.SAFE,
+    "ask_user": Tier.ELICIT,
     "filesystem__read_file": Tier.SAFE,
     "filesystem__read_text_file": Tier.SAFE,
     "filesystem__read_media_file": Tier.SAFE,
@@ -58,10 +60,11 @@ _registry = ToolRegistry()
 _registry.registry(CALCULATOR_TOOL)
 _registry.registry(SEARCH_DOCS_TOOL)
 _registry.registry(WEB_SEARCH_TOOL)
+_registry.registry(ASK_USER_TOOL)
 
 _cache = RedisCache()
 
-DOCS_ONLY_INSTRUCTION = ("\\n\\nYou are in DOCUMENTS-ONLY mode. You have exactly one tool: search_docs. "
+DOCS_ONLY_INSTRUCTION = ("\n\nYou are in DOCUMENTS-ONLY mode. You have exactly one tool: search_docs. "
     "For EVERY question you MUST immediately call the search_docs tool with a query "
     "derived from the question. Do NOT reply with text like 'let me check' or "
     "'I will look at the documents' first. Your VERY FIRST action must be to call "
@@ -101,7 +104,7 @@ class RunOutcome:
     run_cost: float
     cache_key: str
 
-async def _build_and_run(req: AskRequest, user_id: str)->RunOutcome:
+async def _build_and_run(req: AskRequest, user_id: str, on_token = None)->RunOutcome:
     prompt_version = get_prompt("system_agent")
     model = get_provider().model
     run = RunRecord(model=model, prompt_version=prompt_version.version)
@@ -121,6 +124,7 @@ async def _build_and_run(req: AskRequest, user_id: str)->RunOutcome:
     if not req.docs_only:
         session_registry.registry(CALCULATOR_TOOL)
         session_registry.registry(WEB_SEARCH_TOOL)
+        session_registry.registry(ASK_USER_TOOL)
         for t in _registry.list():
             if t.name.startswith("filesystem__"):
                 session_registry.registry(wrap_filesystem_tool(t, user_id))
@@ -130,14 +134,14 @@ async def _build_and_run(req: AskRequest, user_id: str)->RunOutcome:
     
 
     session_folder_note = (
-         "\\n\\n=== CRITICAL FILE-PATH RULE (follow exactly) ===\\n"
-        f"The user's folder is EXACTLY this absolute path: {session_dir}\\n"
+         "\n\n=== CRITICAL FILE-PATH RULE (follow exactly) ===\n"
+        f"The user's folder is EXACTLY this absolute path: {session_dir}\n"
         "This folder ALREADY EXISTS. For ANY file operation on the user's files "
-        "(write, read, list, edit), you MUST use this exact absolute path.\\n"
-        f"To create a file named notes.txt, call write_file with path='{session_dir}/notes.txt'.\\n"
+        "(write, read, list, edit), you MUST use this exact absolute path.\n"
+        f"To create a file named notes.txt, call write_file with path='{session_dir}/notes.txt'.\n"
         "You are FORBIDDEN from using a bare filename like 'notes.txt' or an invented "
-        f"path like '/mnt/session/'. Always prefix with '{session_dir}/'.\\n"
-        "Do NOT call create_directory — the folder already exists.\\n"
+        f"path like '/mnt/session/'. Always prefix with '{session_dir}/'.\n"
+        "Do NOT call create_directory — the folder already exists.\n"
         "=== END RULE ==="
     )
     prompt_text = prompt_version.text + session_folder_note
@@ -166,6 +170,7 @@ async def _build_and_run(req: AskRequest, user_id: str)->RunOutcome:
         thread_id=run.run_id,
         trace=trace,
         force_tool_use=req.docs_only,
+        on_token=on_token,
     )
 
 
@@ -216,6 +221,7 @@ async def ask(req: AskRequest, user: dict = Depends(get_current_user)) -> AskRes
     if not req.docs_only:
         session_registry.registry(CALCULATOR_TOOL)
         session_registry.registry(WEB_SEARCH_TOOL)
+        session_registry.registry(ASK_USER_TOOL)
         for t in _registry.list():
             if t.name.startswith("filesystem__"):
                 session_registry.registry(wrap_filesystem_tool(t, user_id))

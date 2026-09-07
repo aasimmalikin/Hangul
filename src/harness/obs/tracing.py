@@ -48,7 +48,7 @@ class Trace:
 
         }
 
-PRICING = {"gpt-4o-mini": (0.15, 0.60), "gpt-4o": (2.50, 10.00)}
+PRICING = {"gpt-5.5": (5.00, 30.00)}
 
 def cost_usd(model: str, input_tokens: int, output_tokens: int) -> float:
     pin, pout = PRICING.get(model, (0.0, 0.0))

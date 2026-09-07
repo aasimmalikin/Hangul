@@ -18,6 +18,7 @@ from harness.api.routes.ask import (
 from harness.tools.registry import ToolRegistry
 from harness.tools.builtin.calculator import CALCULATOR_TOOL
 from harness.tools.builtin.web_search import WEB_SEARCH_TOOL
+from harness.tools.builtin.ask_user import ASK_USER_TOOL
 from harness.tools.builtin.search_docs_session import make_search_docs_tool
 from harness.tools.builtin.filesystem_session import wrap_filesystem_tool
 
@@ -27,13 +28,15 @@ router = APIRouter()
 class ApproveRequest(BaseModel):
     approval_id: str
     decision: str
+    choice: str | None = None
 
-#764c6b934c9c4176b91fcbe5195da93b
+
 def _build_session_registry(user_id: str) -> ToolRegistry:
     reg = ToolRegistry()
     reg.registry(make_search_docs_tool(user_id))
     reg.registry(CALCULATOR_TOOL)
     reg.registry(WEB_SEARCH_TOOL)
+    reg.registry(ASK_USER_TOOL)
     for t in _registry.list():
         if t.name.startswith("filesystem__"):
             reg.registry(wrap_filesystem_tool(t, user_id))
@@ -61,7 +64,17 @@ async def approve(req: ApproveRequest, user: dict = Depends(get_current_user)) -
     prompt_version = get_prompt("system_agent")
     session_registry = _build_session_registry(user["user_id"])
 
-    if req.decision == "reject":
+    # ask_user is a clarification, not an action: the run should carry on with
+    # the original task, not summarise. Every other tool just gets confirmed.
+    follow_up = "Briefly confirm what was just done, in one sentence."
+
+    if pending["name"] == "ask_user":
+        content = f"The user chose: {req.choice}"
+        follow_up = ("The user answered your clarifying question. Continue the "
+                     "original request using their choice. Do not ask again.")
+        log.info("user answered clarification", choice = req.choice)
+
+    elif req.decision == "reject":
         content = (f"The user REJECTED the action '{pending['name']}'. "
                    f"Do not attempt it. Continue and answer without it.")
         log.info("action rejected", tool=pending["name"])
@@ -93,7 +106,7 @@ async def approve(req: ApproveRequest, user: dict = Depends(get_current_user)) -
 
     trace = Trace(trace_id=req.approval_id)
     result = await run_agent(
-        question="Briefly confirm what was just done, in one sentence.",
+        question=follow_up,
         prompt_text=prompt_version.text,
         registry=session_registry,
         provider=get_provider(),

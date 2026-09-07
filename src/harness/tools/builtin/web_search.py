@@ -28,8 +28,11 @@ async def web_search(query: str, max_results: int = 3) -> str:
 
 WEB_SEARCH_TOOL = Tool(
     name="web_search",
-    description="Search the live web for current information. Use for recent events, "
-                "news, or anything not in the user's own documents. Cite the source URLs.",
+    description="Search the live web. Use it only when the answer depends on current "
+                "or external information the user's own material would not contain -- "
+                "recent events, news, prices, public facts. Check search_docs first for "
+                "anything about the user's documents. Cite the source URL of every "
+                "result you use.",
     parameter={
         "type": "object",
         "properties": {"query": {"type": "string"}, "max_results": {"type": "integer"}},

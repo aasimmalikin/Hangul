@@ -23,7 +23,10 @@ async def calculate(expression:str)->str:
 
 CALCULATOR_TOOL = Tool(
     name = "calculator",
-    description = "Evaluate a basic arithmetic expression like '2 + 2 * 3'.",
+    description = ("Evaluate an arithmetic expression, e.g. '2 + 2 * 3'. Use this for "
+        "every calculation needed to answer the user, including simple ones, "
+        "rather than doing the arithmetic yourself. Supports + - * / % ** and "
+        "parentheses."),
     parameter = {
         "type": "object",
         "properties": {"expression":{"type": "string"}},

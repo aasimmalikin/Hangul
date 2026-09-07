@@ -15,7 +15,7 @@ export async function POST(req: Request) {
   }
 
   const token = await mintServiceToken(session.user.email, "user")
-  const { approval_id, decision } = await req.json()
+  const { approval_id, decision, choice } = await req.json()
 
   const res = await fetch(`${process.env.FASTAPI_URL}/approve`, {
     method: "POST",
@@ -23,7 +23,7 @@ export async function POST(req: Request) {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ approval_id, decision }),
+    body: JSON.stringify({ approval_id, decision, choice }),
   })
 
   const body = await res.text()

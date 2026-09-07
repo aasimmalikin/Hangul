@@ -34,3 +34,62 @@ class OpenAIProvider:
             input_tokens=getattr(usage, "prompt_tokens", 0),
             output_tokens=getattr(usage, "completion_tokens", 0),
         )
+
+    async def chat_stream(self, messages: list[dict], tools: list[dict],
+                          tool_choice: str | None = None):
+        """Like chat(), but yields text tokens as they arrive.
+
+        Yields ("token", str) for each text delta, then ("final", AssistantTurn)
+        once complete. The caller streams the tokens live and uses the final
+        AssistantTurn for tool calls and token accounting.
+        """
+        kwargs = {
+            "model": self.model,
+            "messages": messages,
+            "tools": tools or None,
+            "stream": True,
+            "stream_options": {"include_usage": True},
+        }
+        if tool_choice is not None and tools:
+            kwargs["tool_choice"] = tool_choice
+
+        stream = await self.client.chat.completions.create(**kwargs)
+
+        text_parts: list[str] = []
+        tool_fragments: dict[int, dict] = {}
+        input_tokens = output_tokens = 0
+
+        async for chunk in stream:
+            if chunk.usage:
+                input_tokens = getattr(chunk.usage, "prompt_tokens", 0)
+                output_tokens = getattr(chunk.usage, "completion_tokens", 0)
+
+            if not chunk.choices:
+                continue
+            delta = chunk.choices[0].delta
+
+            if delta.content:
+                text_parts.append(delta.content)
+                yield ("token", delta.content)
+
+            for tc in (delta.tool_calls or []):
+                slot = tool_fragments.setdefault(
+                    tc.index, {"id": "", "name": "", "args": ""})
+                if tc.id:
+                    slot["id"] = tc.id
+                if tc.function and tc.function.name:
+                    slot["name"] = tc.function.name
+                if tc.function and tc.function.arguments:
+                    slot["args"] += tc.function.arguments
+
+        calls = [
+            ToolCall(id=f["id"], name=f["name"],
+                     arguments=json.loads(f["args"] or "{}"))
+            for f in tool_fragments.values() if f["name"]
+        ]
+        yield ("final", AssistantTurn(
+            text="".join(text_parts) or None,
+            tool_calls=calls,
+            input_tokens=input_tokens,
+            output_tokens=output_tokens,
+        ))

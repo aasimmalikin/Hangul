@@ -4,6 +4,7 @@ class Tier(str, Enum):
     SAFE = "safe"
     SENSITIVE = "sensitive"
     DESTRUCTIVE = "destructive"
+    ELICIT = "elicit"
     DENIED = "denied"
 
 class Decision(str, Enum):

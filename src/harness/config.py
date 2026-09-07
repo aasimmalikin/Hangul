@@ -8,7 +8,7 @@ class Settings(BaseSettings):
     environment: Literal["dev", "prod"] = "dev"
     log_level: str = "INFO"
     openai_api_key: str | None = None
-    model: str = "gpt-4o-mini"
+    model: str = "gpt-5.5"
     tavily_api_key: str | None = None
     database_url: str = "postgresql+psycopg://agentic:agentic@localhost:5432/agentic_qa"
     redis_url: str = "redis://localhost:6379/0"

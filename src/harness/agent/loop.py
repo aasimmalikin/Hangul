@@ -36,6 +36,7 @@ class AgentResult(BaseModel):
     pending_tool: dict | None = None
 
 
+
 async def run_agent(
     *,
     question: str,
@@ -51,6 +52,7 @@ async def run_agent(
     force_tool_use: bool = False,
     max_steps: int = 20,
     max_tokens: int = 50_000,
+    on_token=None,
 ) -> AgentResult:
     cp = store.load(thread_id) or Checkpoint(
         thread_id=thread_id,
@@ -114,7 +116,17 @@ async def run_agent(
 
             with trace.span("gen_ai.chat",
                             **{"gen_ai.request.model": provider.model}) as sp:
+                
                 tc_choice = "required" if (force_tool_use and step == first_step) else None
+                if on_token is not None and tc_choice is None:
+                    turn = None
+                    async for kind, payload in provider.chat_stream(messages, tools, tool_choice = tc_choice):
+                        if kind == "token":
+                            on_token(payload)
+                        else:
+                            turn = payload
+                else:
+                    turn = await provider.chat(messages, tools, tool_choice = tc_choice)
                 turn = await provider.chat(messages, tools, tool_choice=tc_choice)
             sp.attributes["gen_ai.usage.input_tokens"] = turn.input_tokens
             sp.attributes["gen_ai.usage.output_tokens"] = turn.output_tokens

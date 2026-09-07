@@ -62,17 +62,41 @@ export async function POST(req: Request) {
             const data = JSON.parse(dataStr)
 
             if (eventType === "approval_required") {
-              // Surface the approval as a custom data part; suppress the
-              // placeholder answer text so the card stands alone.
+              // Suppress the placeholder answer text so the card stands alone.
               pendingApproval = true
-              send({
-                type: "data-approval",
-                data: {
-                  runId: data.run_id,
-                  tool: data.name,
-                  arguments: data.arguments,
-                },
-              })
+              if (data.name === "ask_user") {
+                // A clarification question, not an action approval. Options are
+                // {label, description} objects; tolerate plain strings too, so a
+                // checkpoint written before that schema change still renders.
+                const options = (data.arguments.options ?? []).map(
+                  (o: unknown) =>
+                    typeof o === "string"
+                      ? { label: o, description: "" }
+                      : {
+                          label: String((o as { label?: unknown }).label ?? ""),
+                          description: String(
+                            (o as { description?: unknown }).description ?? ""
+                          ),
+                        }
+                )
+                send({
+                  type: "data-choice",
+                  data: {
+                    runId: data.run_id,
+                    question: data.arguments.question,
+                    options,
+                  },
+                })
+              } else {
+                send({
+                  type: "data-approval",
+                  data: {
+                    runId: data.run_id,
+                    tool: data.name,
+                    arguments: data.arguments,
+                  },
+                })
+              }
             } else if (eventType === "token") {
               if (!pendingApproval) {
                 send({ type: "text-delta", id: "0", delta: data.text })

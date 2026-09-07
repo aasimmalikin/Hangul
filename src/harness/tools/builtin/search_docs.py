@@ -14,8 +14,11 @@ async def search_docs(query:str, k:int = 3)->str:
 
 SEARCH_DOCS_TOOL = Tool(
     name = "search_docs",
-    description = "Search the indexed documents for passages relevant to a query. "
-                  "Use this to answer questions about the user's documents.",
+    description="Search the user's document library for passages relevant to a "
+                  "query. This is the only way to reach that library -- the "
+                  "filesystem tools cannot see it. Use it for any question about "
+                  "what the documents say, including when the user names a "
+                  "document by title. Cite the [source] shown with each passage.",
     
     parameter = {
         "type": "object",

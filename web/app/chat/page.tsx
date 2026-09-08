@@ -11,6 +11,7 @@ import {
 } from "@/components/ai-elements/conversation"
 import { Message, MessageContent } from "@/components/ai-elements/message"
 import { ToolRow, type ToolActivity } from "@/components/agent-activity"
+import { Wordmark } from "@/components/Wordmark"
 
 type Approval = { runId: string; tool: string; arguments: Record<string, unknown> }
 type ChoiceOption = { label: string; description: string }
@@ -110,7 +111,10 @@ export default function Chat() {
     }
 
     if (part.type === "data-tool") {
-      return <ToolRow key={key} activity={part.data as ToolActivity} />
+      const activity = part.data as ToolActivity
+      // ask_user has no result worth showing — the choice card below says it.
+      if (activity.tool === "ask_user") return null
+      return <ToolRow key={key} activity={activity} />
     }
 
     if (part.type === "data-choice") {
@@ -175,6 +179,9 @@ export default function Chat() {
 
   return (
     <div className="mx-auto flex h-screen max-w-3xl flex-col p-4">
+      <header className="mb-2 shrink-0">
+        <Wordmark />
+      </header>
       <Conversation className="flex-1">
         <ConversationContent>
           {messages.length === 0 ? (

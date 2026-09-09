@@ -764,6 +764,7 @@ dev = [
     { name = "psycopg", extra = ["binary"] },
     { name = "pytest" },
     { name = "ruff" },
+    { name = "sse-starlette" },
 ]
 
 [package.metadata]
@@ -786,6 +787,7 @@ requires-dist = [
     { name = "requests", specifier = ">=2.32" },
     { name = "ruff", marker = "extra == 'dev'" },
     { name = "sqlalchemy", specifier = ">=2.0" },
+    { name = "sse-starlette", marker = "extra == 'dev'", specifier = ">=2.1" },
     { name = "streamlit", specifier = ">=1.60" },
     { name = "structlog", specifier = ">=24.1" },
     { name = "tavily-python", specifier = ">=0.5" },

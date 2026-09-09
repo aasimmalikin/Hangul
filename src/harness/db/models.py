@@ -38,5 +38,15 @@ class Transaction(Base):
     thread_id: Mapped[str | None] = mapped_column(String(32), nullable = True)
     balance_after: Mapped[Decimal] = mapped_column(Numeric(12,4), nullable = False)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default = func.now(), nullable = False)
+
+class UserMemory(Base):
+    __tablename__ = "user_memory"
+    id: Mapped[int] = mapped_column(primary_key = True, autoincrement = True)
+    user_id: Mapped[str] = mapped_column(String(64), nullable = False, index = True)
+    kind: Mapped[str] = mapped_column(String(32), nullable = False)          # preference | fact | correction
+    content: Mapped[str] = mapped_column(String(1024), nullable = False)     # the remembered statement
+    active: Mapped[bool] = mapped_column(nullable = False, default = True)   # supersede-don't-delete
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone = True), server_default = func.now(), nullable = False)
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone = True), server_default = func.now(), onupdate = func.now(), nullable = False)
     
 

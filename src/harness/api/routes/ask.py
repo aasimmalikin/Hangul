@@ -15,6 +15,8 @@ from harness.tools.builtin.web_search import WEB_SEARCH_TOOL
 from harness.tools.builtin.ask_user import ASK_USER_TOOL
 from harness.tools.builtin.search_docs_session import make_search_docs_tool
 from harness.tools.builtin.filesystem_session import wrap_filesystem_tool
+from harness.tools.builtin.recall import make_recall_tool
+from harness.tools.builtin.remember import make_remember_tool
 from harness.cache.keys import answer_key
 from harness.cache.redis_cache import RedisCache
 from harness.policy.policy import ToolPolicy
@@ -29,6 +31,8 @@ from harness.db.ledger import record_transaction
 from decimal import Decimal
 
 from dataclasses import dataclass
+
+from harness.db.memory import profile_text
 
 _audit = AuditLog()
 _store = CheckpointStore()
@@ -52,6 +56,8 @@ _policy = ToolPolicy(tiers={
     "filesystem__edit_file": Tier.DESTRUCTIVE,
     "filesystem__create_directory": Tier.DESTRUCTIVE,
     "filesystem__move_file": Tier.DESTRUCTIVE,
+    "recall": Tier.SAFE,
+    "remember": Tier.SAFE,
 })
 
 
@@ -119,6 +125,8 @@ async def _build_and_run(req: AskRequest, user_id: str, on_event=None) -> RunOut
 
     # search_docs is ALWAYS available — it is the one tool docs-only mode needs
     session_registry.registry(make_search_docs_tool(user_id))
+    session_registry.registry(make_recall_tool(user_id))
+    session_registry.registry(make_remember_tool(user_id))
 
     # the other tools are only added when NOT in docs-only mode
     if not req.docs_only:
@@ -145,6 +153,11 @@ async def _build_and_run(req: AskRequest, user_id: str, on_event=None) -> RunOut
         "=== END RULE ==="
     )
     prompt_text = prompt_version.text + session_folder_note
+
+    profile = profile_text(user_id)
+
+    if profile:
+        prompt_text = profile + "\n\n=== USER PROFILE ===\n" + profile
 
     if req.docs_only:
         prompt_text = prompt_text + DOCS_ONLY_INSTRUCTION
